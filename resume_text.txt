@@ -1,0 +1,79 @@
+KABILESH MANOKARAN
+”Enthusiastic IT Graduate with Comprehensive Knowledge in Computer Science.
+Aspiring in Business and Management, eager to Apply Skills in a Real-World Setting.”
+CONTACT
+mahikabil07@gmail.com
+Kabilesh Manokaran
+8489805969 / 8667250099
+Tiruppur, Tamil Nadu, INDIA
+SKILLS
+Software Tools
+Visualisation ○○○○○
+(e.g. matplotlib, gnuplot, ...)
+Data handling/analysis ○○○○○
+(e.g. numpy, scipy, pandas, ...)
+Docker ○○○○○
+Git and GitHub ○○○○○
+Management and Technical
+MS 365 Suite ○○○○○
+(Word, Excel, PowerPoint, ...)
+Google workspace ○○○○○
+(Docs, Sheets, Slides)
+Clickup ○○○○○
+Notion ○○○○○
+Operating Systems
+Linux ○○○○○
+Windows ○○○○○
+Languages
+English ○○○○○
+Tamil ○○○○○
+CERTIFICATES
+Certification for successfully completing
+Python DataVisualization by UDEMY.
+Certification for successfully completing
+HTML and CSS by NASSCOM.
+Certification for successfully completing
+Machine Learning with SCIKIT - Learn with
+Python by UDEMY.
+GENERAL SKILLS
+Communication Problem-solving
+Leadership Adaptability
+Decision making Critical thinking
+Time Management Work ethicPROFILE
+To pursue a challenging career that will allow me to enhance my skills and
+knowledge to utilize my abilities in an industry that offers professional growth
+while being resourceful, innovative and Flexible.
+WORK HISTORY
+2023 - 2025 Junior Python Django Developer
+Increased efficiency of RESTful API endpoints with Django Rest
+Framework while ensuring appropriate authentication mecha-
+nisms were implemented.
+Ensured software quality by conducting thorough unit testing
+using Python’s unittest framework and following best practices
+for test-driven development.
+Mobile App Developer Intern
+Coordinated with quality assurance team members to address
+identified issues promptly during testing phases.
+Participated in regular code reviews, refining programming
+skills while ensuring adherence to best practices.
+Assisted in the creation of wireframes and mockups, translat-
+ing client requirements into visual design concepts.
+SKILLS
+Programming
+Python ○○○○○
+sql ○○○○○
+Django ○○○○○
+Salesforce Developing ○○○○○
+Salesforce Admin ○○○○○
+APEX ○○○○○
+UI/UX Designin ○○○○○
+HTML/CSS ○○○○○
+JAVA ○○○○○
+JavaScript ○○○○○
+EDUCATION
+Bachelor of Science(Bsc.IT)
+08/2020-06/2023
+SRI KRISHNA ADITHYA COLLEGE OF ARTS
+and SCIENCE, Coimbatore
+United public school(CBSE)72 percentage-Batch 2020
+Agaram public school(CBSE)60 percentage-Batch 2018

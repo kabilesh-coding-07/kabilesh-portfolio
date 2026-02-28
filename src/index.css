@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased text-ink;
+    background-color: #111827;
+    /* Noir background */
+    /* Dark comic halftone dot pattern */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 8px 8px;
+    background-position: 0 0, 4px 4px;
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .comic-stroke {
+    -webkit-text-stroke: 1.5px black;
+  }
+
+  .animate-matrix {
+    animation: matrixFall linear infinite;
+  }
+}
+
+@keyframes matrixFall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(800px);
+    opacity: 0;
+  }
+}

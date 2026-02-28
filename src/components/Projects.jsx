@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, X, Terminal, ChevronRight, Play, RefreshCcw } from 'lucide-react';
+import { ExternalLink, Github, X, Terminal, ChevronRight, Play, RefreshCcw, Minus, Square } from 'lucide-react';
 
 const Projects = () => {
     const [activeProject, setActiveProject] = useState(null);
@@ -35,7 +35,88 @@ const Projects = () => {
         }
     ];
 
-    // MOVIE RANKER SIMULATION
+    // --- UNIQUE UI WRAPPERS ---
+
+    const RetroWin95Wrapper = ({ title, children, onClose }) => (
+        <div className="bg-[#c0c0c0] border-t-2 border-l-2 border-white border-b-2 border-r-2 border-[#808080] shadow-[2px_2px_0px_#000] p-1 w-full max-w-2xl h-[500px] flex flex-col font-sans select-none overflow-hidden">
+            {/* Title Bar */}
+            <div className="bg-[#000080] text-white p-1 flex justify-between items-center text-xs px-2 font-bold mb-1">
+                <div className="flex items-center gap-1">
+                    <div className="w-3 h-3 bg-[#c0c0c0] border border-white"></div>
+                    <span className="tracking-tighter">{title}</span>
+                </div>
+                <div className="flex gap-1">
+                    <button className="w-4 h-4 bg-[#c0c0c0] border-t border-l border-white border-b border-r border-[#808080] text-[#000] flex items-center justify-center text-[10px]"><Minus size={10} /></button>
+                    <button className="w-4 h-4 bg-[#c0c0c0] border-t border-l border-white border-b border-r border-[#808080] text-[#000] flex items-center justify-center text-[10px]"><Square size={8} /></button>
+                    <button onClick={onClose} className="w-4 h-4 bg-[#c0c0c0] border-t border-l border-white border-b border-r border-[#808080] text-[#000] flex items-center justify-center text-[10px] font-bold">X</button>
+                </div>
+            </div>
+            {/* Menu Bar */}
+            <div className="flex gap-4 text-xs text-[#000] mb-1 px-1 border-b border-[#808080] pb-1 font-normal">
+                <span>File</span><span>Edit</span><span>Search</span><span>Help</span>
+            </div>
+            {/* Content Area */}
+            <div className="flex-1 bg-white border-t border-l border-[#808080] border-b border-r border-white p-4 overflow-y-auto text-[#000] custom-scrollbar-win95">
+                {children}
+            </div>
+            {/* Status Bar */}
+            <div className="mt-1 border-t border-white border-l border-white border-b border-[#808080] border-r border-[#808080] px-2 py-0.5 text-[10px] text-[#000] flex justify-between bg-[#c0c0c0]">
+                <span>Status: READY</span>
+                <span className="border-l border-[#808080] pl-2">C:\COLLEGE\PY\</span>
+            </div>
+        </div>
+    );
+
+    const LegalPadWrapper = ({ children, onClose }) => (
+        <div className="bg-[#fff9c4] border-l-[30px] border-[#ef5350] shadow-[10px_10px_30px_rgba(0,0,0,0.2)] w-full max-w-2xl h-[600px] flex flex-col relative rotate-1 group p-8 pt-4">
+            <button
+                onClick={onClose}
+                className="absolute top-4 right-4 text-[#ef5350] hover:scale-110 transition-transform p-2 z-10"
+            >
+                <X size={32} strokeWidth={3} />
+            </button>
+            <div className="absolute top-0 left-[-30px] right-0 h-1 bg-[#8d1c1c] opacity-10"></div>
+            {/* Ruled Lines */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ backgroundImage: 'linear-gradient(#90caf9 1px, transparent 1px)', backgroundSize: '100% 28px', marginTop: '40px' }}></div>
+
+            <div className="flex-1 relative z-10 font-serif text-[#37474f] leading-[28px]">
+                {children}
+            </div>
+            <div className="absolute bottom-4 left-0 right-0 text-center opacity-20 pointer-events-none">
+                <p className="text-xs font-serif italic text-slate-800 tracking-widest uppercase">Property of Student 07 // Internal Use Only</p>
+            </div>
+        </div>
+    );
+
+    const BIOSWrapper = ({ title, children, onClose }) => (
+        <div className="bg-[#000000] border-4 border-[#00ff00] w-full max-w-3xl h-[550px] flex flex-col p-6 font-mono text-[#00ff00] relative shadow-[0_0_20px_rgba(0,255,0,0.2)] overflow-hidden">
+            <button
+                onClick={onClose}
+                className="absolute top-4 right-4 text-[#00ff00] hover:bg-[#003300] p-1 border border-[#00ff00]"
+            >
+                <X size={20} />
+            </button>
+            <div className="mb-6 opacity-80 text-[10px]">
+                <p>ROM BIOS VERSION 1.0.4 - COPYRIGHT (C) 2007</p>
+                <p>CPU: PYTHON INTERPRETER v2.7 ENABLED</p>
+                <p>MEMORY TEST: 640K OK</p>
+                <p>BOOT DEVICE: DISKETTE 1 [LOADING...]</p>
+                <p className="mt-2 tracking-widest">----------------------------------------------------</p>
+            </div>
+            <h2 className="text-sm font-bold border-b border-[#00ff00] pb-2 mb-4 tracking-[0.2em]">{title}</h2>
+            <div className="flex-1 overflow-y-auto custom-scrollbar-bios text-sm leading-relaxed">
+                {children}
+            </div>
+            <div className="mt-4 text-[10px] animate-pulse">
+                _ SYSTEM READY | CURSOR_LOCK ACTIVE
+            </div>
+            {/* Subtle crt line overlay */}
+            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(transparent_0%,rgba(0,255,0,0.05)_50%,transparent_100%)] bg-[length:100%_4px] opacity-20"></div>
+        </div>
+    );
+
+    // --- RE-CODED SIMULATIONS WITH THEME-NEUTRAL LOGIC ---
+
     const MovieRankerSim = () => {
         const [movies, setMovies] = useState([]);
         const [input, setInput] = useState('');
@@ -49,33 +130,49 @@ const Projects = () => {
         };
 
         return (
-            <div className="space-y-4">
-                <p className="text-comic-yellow font-mono">{"> --- MOVIE RANKER v1.0 ---"}</p>
-                <form onSubmit={addMovie} className="flex gap-2">
-                    <span className="text-comic-cyan">$</span>
-                    <input
-                        autoFocus
-                        type="text"
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        placeholder="ENTER TITLE..."
-                        className="bg-transparent border-none outline-none text-white font-mono w-full"
-                    />
+            <div className="space-y-4 text-black font-sans">
+                <p className="font-bold underline text-sm border-b border-black pb-1 mb-4">MOVIE_RANKER.EXE - COLLEGIATE EDITION</p>
+                <p className="text-xs italic text-slate-600 mb-4">Input movie titles to finalize the end-of-year selection.</p>
+
+                <form onSubmit={addMovie} className="space-y-2">
+                    <label className="text-xs font-bold uppercase block">Add Entry:</label>
+                    <div className="flex gap-2">
+                        <input
+                            autoFocus
+                            type="text"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            className="flex-1 bg-white border-2 border-[#808080] border-t-black border-l-black px-2 py-1 text-sm outline-none"
+                        />
+                        <button type="submit" className="bg-[#c0c0c0] border-2 border-white border-b-[#808080] border-r-[#808080] px-4 py-1 text-xs font-bold active:border-[#808080] active:border-b-white active:border-r-white transition-all">
+                            ADD
+                        </button>
+                    </div>
                 </form>
-                <div className="mt-4 p-4 border border-comic-cyan/30 bg-noir/50">
-                    <p className="text-xs text-slate-500 mb-2 font-mono tracking-widest uppercase">Official Selection:</p>
-                    {movies.map((m, i) => (
-                        <p key={i} className="font-mono text-white animate-in slide-in-from-left-2 duration-300">
-                            {i + 1}. {m.toUpperCase()}
-                        </p>
-                    ))}
-                    {movies.length === 0 && <p className="text-slate-600 font-mono italic">Waiting for input...</p>}
+
+                <div className="mt-6 border-2 border-[#808080] border-t-black border-l-black p-3 bg-white h-48 overflow-y-auto shadow-inner">
+                    <table className="w-full text-xs text-left">
+                        <thead>
+                            <tr className="bg-[#000080] text-white">
+                                <th className="px-1 border-r border-[#c0c0c0]">#</th>
+                                <th className="px-2">MOVIE_TITLE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {movies.map((m, i) => (
+                                <tr key={i} className={i % 2 === 0 ? 'bg-[#f0f0f0]' : 'bg-white'}>
+                                    <td className="px-1 border-r border-slate-200">{i + 1}</td>
+                                    <td className="px-2">{m.toUpperCase()}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    {movies.length === 0 && <p className="text-slate-400 p-2 text-[10px]">No entries found in database.</p>}
                 </div>
             </div>
         );
     };
 
-    // CINE-TODO SIMULATION
     const CineTodoSim = () => {
         const [tasks, setTasks] = useState([
             { text: "Script Analysis", done: true },
@@ -90,26 +187,29 @@ const Projects = () => {
         };
 
         return (
-            <div className="space-y-4">
-                <p className="text-comic-yellow font-mono">{"> --- CINE-TODO TERMINAL ---"}</p>
-                <div className="space-y-2">
+            <div className="space-y-8 text-[#37474f]">
+                <h3 className="text-4xl font-serif font-bold underline decoration-[#ef5350] underline-offset-8 decoration-4">Project Milestones</h3>
+                <div className="space-y-3 mt-8">
                     {tasks.map((t, i) => (
-                        <div key={i} onClick={() => toggle(i)} className="flex items-center gap-3 cursor-pointer group">
-                            <span className={`text-xl font-mono ${t.done ? 'text-comic-green' : 'text-comic-red'}`}>
-                                {t.done ? '[x]' : '[ ]'}
-                            </span>
-                            <span className={`font-mono ${t.done ? 'text-slate-500 line-through' : 'text-white'} group-hover:text-comic-cyan transition-colors`}>
+                        <div key={i} onClick={() => toggle(i)} className="flex items-center gap-4 cursor-pointer group">
+                            <div className={`w-8 h-8 border-2 border-[#546e7a]/40 rounded-sm flex items-center justify-center transition-colors ${t.done ? 'bg-[#546e7a]/20' : 'bg-transparent'}`}>
+                                {t.done && <X size={24} color="#ef5350" strokeWidth={3} className="rotate-12" />}
+                            </div>
+                            <span className={`text-2xl font-serif tracking-tight ${t.done ? 'opacity-40 italic' : 'text-[#263238]'} group-hover:text-black transition-colors`}>
                                 {t.text}
                             </span>
                         </div>
                     ))}
                 </div>
-                <p className="text-xs text-comic-cyan mt-6 font-mono animate-pulse">{"> STATUS: ACTIVE"}</p>
+
+                <div className="mt-20 pt-10 relative">
+                    <div className="absolute top-0 left-0 w-24 h-0.5 bg-blue-200"></div>
+                    <p className="text-red-600 font-serif italic text-2xl font-black transform -rotate-3 border-4 border-red-600 px-4 py-2 inline-block">FINAL SUBMISSION: MAR_30</p>
+                </div>
             </div>
         );
     };
 
-    // SCRIPT ANALYZER SIMULATION
     const ScriptAnalyzerSim = () => {
         const [text, setText] = useState('');
         const [results, setResults] = useState(null);
@@ -129,30 +229,51 @@ const Projects = () => {
         };
 
         return (
-            <div className="space-y-4">
-                <p className="text-comic-yellow font-mono">{"> --- SCRIPT ANALYSER ENGINE ---"}</p>
-                <textarea
-                    autoFocus
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    placeholder="PASTE SCRIPT SNIPPET HERE..."
-                    className="w-full h-32 bg-noir/50 border border-ink p-3 text-white font-mono text-sm outline-none focus:border-comic-cyan transition-colors resize-none"
-                />
-                <button
-                    onClick={analyze}
-                    disabled={!text || isScanning}
-                    className="px-6 py-2 bg-comic-cyan text-noir font-bold font-mono hover:bg-white transition-colors disabled:opacity-50"
-                >
-                    {isScanning ? 'SCANNING...' : 'EXEC_ANALYSIS'}
-                </button>
+            <div className="space-y-4 font-mono">
+                <p className="text-[#00ff00] blink">{"> SYSTEM_INIT_READY..."}</p>
+                <div className="relative group">
+                    <textarea
+                        autoFocus
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        placeholder="[INPUT_SCRIPT_DATA_HERE]"
+                        className="w-full h-32 bg-[#001100] border-2 border-[#00ff00] p-4 text-[#00ff00] text-sm outline-none resize-none placeholder:text-[#00ff00]/20 focus:shadow-[0_0_10px_rgba(0,255,0,0.5)] transition-all"
+                    />
+                    <div className="absolute bottom-2 right-2 text-[8px] opacity-30 text-[#00ff00]">64kb Free</div>
+                </div>
+
+                <div className="flex gap-4">
+                    <button
+                        onClick={analyze}
+                        disabled={!text || isScanning}
+                        className="flex-1 py-3 border-2 border-[#00ff00] text-[#00ff00] font-bold hover:bg-[#00ff00] hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed group relative overflow-hidden"
+                    >
+                        <span className="relative z-10">{isScanning ? '[PROCESSING_DATA...]' : '[EXECUTE_ANALYSIS]'}</span>
+                    </button>
+                    <button
+                        onClick={() => { setText(''); setResults(null); }}
+                        className="px-4 py-3 border-2 border-[#00ff00]/30 text-[#00ff00]/30 hover:text-[#00ff00] hover:border-[#00ff00] transition-all"
+                    >
+                        [CLR]
+                    </button>
+                </div>
 
                 {results && !isScanning && (
-                    <div className="mt-4 p-4 border-2 border-ink bg-noir/80 animate-in fade-in zoom-in duration-300">
-                        <p className="text-comic-cyan font-mono mb-2">SCAN COMPLETE:</p>
-                        <p className="text-white font-mono text-sm">TOTAL WORDS: {results.total}</p>
-                        <p className="text-white font-mono text-sm">UNIQUE CONTEXTS: {results.unique}</p>
-                        <div className={`mt-2 p-2 font-mono text-xs inline-block ${results.noir ? 'bg-comic-red text-white' : 'bg-slate-800 text-slate-400'}`}>
-                            {results.noir ? 'GENRE: NEO-NOIR DETECTED' : 'GENRE: UNKNOWN'}
+                    <div className="mt-8 border-2 border-[#00ff00] p-6 bg-[#001100] shadow-[inset_0_0_20px_rgba(0,255,0,0.2)]">
+                        <div className="flex justify-between items-center mb-6">
+                            <span className="bg-[#00ff00] text-black px-2 py-0.5 text-[10px] font-bold">REPORT_0x4F2</span>
+                            <span className="text-[10px] opacity-50">SYNC_OK</span>
+                        </div>
+                        <div className="space-y-2 text-xs">
+                            <p><span className="opacity-50 tracking-widest">METRIC_ONE:</span> TOTAL_WORD_COUNT......[{results.total}]</p>
+                            <p><span className="opacity-50 tracking-widest">METRIC_TWO:</span> UNIQUE_NODES........[{results.unique}]</p>
+                            <div className="h-px bg-[#00ff00]/30 my-4"></div>
+                            <p className="text-sm font-bold flex items-center gap-4">
+                                NOIR_CONTEXT:
+                                <span className={results.noir ? 'text-black bg-[#00ff00] px-4 font-black' : 'opacity-40'}>
+                                    {results.noir ? 'TRUE' : 'FALSE_NOT_FOUND'}
+                                </span>
+                            </p>
                         </div>
                     </div>
                 )}
@@ -241,64 +362,39 @@ const Projects = () => {
                 ))}
             </div>
 
-            {/* INTERACTIVE HACKER CONSOLE OVERLAY */}
-            <AnimatePresence>
+            {/* INTERACTIVE PROJECT OVERLAYS (UNIQUE SKINS) */}
+            <AnimatePresence mode="wait">
                 {activeProject && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-8"
+                        className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
                     >
-                        {/* CRT Effect Layers */}
-                        <div className="absolute inset-0 pointer-events-none z-50 overflow-hidden opacity-20">
-                            <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
-                            <div className="absolute inset-0 animate-pulse bg-white/5"></div>
-                        </div>
-
                         <motion.div
-                            initial={{ scale: 0.9, y: 20 }}
+                            initial={{ scale: 0.9, y: 50 }}
                             animate={{ scale: 1, y: 0 }}
-                            exit={{ scale: 0.9, y: 20 }}
-                            className="bg-noir border-4 border-comic-cyan w-full max-w-4xl h-[600px] flex flex-col relative shadow-[0_0_50px_rgba(0,240,255,0.3)]"
+                            exit={{ scale: 0.9, y: 50, opacity: 0 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            className="w-full max-w-4xl flex items-center justify-center"
                         >
-                            {/* Terminal Header */}
-                            <div className="bg-comic-cyan p-3 flex justify-between items-center border-b-4 border-ink">
-                                <div className="flex items-center gap-2 font-mono text-noir font-bold uppercase tracking-tighter">
-                                    <Terminal size={20} />
-                                    <span>{activeProject.title} // MISSION_ID: {activeProject.id.toUpperCase()}</span>
-                                </div>
-                                <button
-                                    onClick={() => setActiveProject(null)}
-                                    className="p-1 hover:bg-comic-red transition-colors text-noir"
-                                >
-                                    <X size={24} />
-                                </button>
-                            </div>
+                            {activeProject.id === 'ranker' && (
+                                <RetroWin95Wrapper title="MOVIE RANKER v1.0" onClose={() => setActiveProject(null)}>
+                                    <MovieRankerSim />
+                                </RetroWin95Wrapper>
+                            )}
 
-                            {/* Terminal Window Content */}
-                            <div className="flex-1 p-6 font-mono overflow-y-auto custom-scrollbar relative">
-                                {/* Boot Sequence UI */}
-                                <div className="mb-6 opacity-60 text-[10px] space-y-1">
-                                    <p className="text-comic-cyan">SYSTEM BOOT... OK</p>
-                                    <p className="text-comic-cyan">DECRYPTING ASSETS... 100%</p>
-                                    <p className="text-comic-cyan">ESTABLISHING SECURE CONNECTION...</p>
-                                    <p className="text-comic-cyan tracking-widest">{">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"}</p>
-                                </div>
+                            {activeProject.id === 'todo' && (
+                                <LegalPadWrapper onClose={() => setActiveProject(null)}>
+                                    <CineTodoSim />
+                                </LegalPadWrapper>
+                            )}
 
-                                {activeProject.id === 'ranker' && <MovieRankerSim />}
-                                {activeProject.id === 'todo' && <CineTodoSim />}
-                                {activeProject.id === 'analyzer' && <ScriptAnalyzerSim />}
-
-                                {/* Bottom Status Bar */}
-                                <div className="absolute bottom-4 left-6 right-6 flex justify-between items-center pt-4 border-t border-comic-cyan/20 opacity-40">
-                                    <div className="flex items-center gap-2 text-[10px] text-comic-cyan italic">
-                                        <RefreshCcw size={10} className="animate-spin" />
-                                        SYNCING WITH NEURAL_NET...
-                                    </div>
-                                    <p className="text-[10px] text-white">V_2049.0.1</p>
-                                </div>
-                            </div>
+                            {activeProject.id === 'analyzer' && (
+                                <BIOSWrapper title="SCRIPT_ANALYZER_CORE.EXE" onClose={() => setActiveProject(null)}>
+                                    <ScriptAnalyzerSim />
+                                </BIOSWrapper>
+                            )}
                         </motion.div>
                     </motion.div>
                 )}

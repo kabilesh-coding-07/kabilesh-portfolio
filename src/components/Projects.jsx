@@ -1,91 +1,106 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Lock, Cpu, Eye } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 
 const Projects = () => {
+    const projects = [
+        {
+            title: 'E-Commerce Dashboard',
+            period: 'Jan 2024 — Present',
+            badge: 'Feature Presentation',
+            description: 'A comprehensive admin dashboard with real-time analytics, inventory management, and data visualizations.',
+            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
+            bgColor: 'bg-slate-900',
+            demoUrl: '#',
+        },
+        {
+            title: 'AI Productivity Tool',
+            period: 'Oct 2023 — Dec 2023',
+            badge: 'Origin Story',
+            description: 'An AI-powered application that helps teams organize workflows seamlessly with NLP.',
+            image: 'https://images.unsplash.com/photo-1664575602276-acd073f104c1?auto=format&fit=crop&q=80&w=1200',
+            bgColor: 'bg-indigo-950',
+            demoUrl: '#',
+        }
+    ];
+
     return (
-        <section id="projects" className="py-24 bg-noir relative overflow-hidden">
-            {/* Background Narrative Grid */}
-            <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-            </div>
+        <section id="projects" className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+            {/* Section Header */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="flex flex-col items-center justify-center mb-20"
+            >
+                <h2 className="text-6xl md:text-7xl font-comic tracking-widest text-ink mb-6 comic-stroke" style={{ textShadow: '4px 4px 0px #00f0ff' }}>
+                    BLOCKBUSTERS.
+                </h2>
+                <div className="flex gap-8 text-lg font-bold uppercase tracking-wider text-slate-400">
+                    <a href="#about" className="hover:text-comic-yellow transition-colors">Origins</a>
+                    <span className="text-ink comic-stroke" style={{ textShadow: '2px 2px 0px #ff003c' }}>Features</span>
+                    <a href="#stack" className="hover:text-comic-cyan transition-colors">Arsenal</a>
+                </div>
+            </motion.div>
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="flex flex-col items-center text-center space-y-8"
-                >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-comic-cyan/10 border border-comic-cyan/30 text-comic-cyan text-[10px] font-bold tracking-[0.3em] uppercase">
-                        <Terminal size={12} />
-                        Classified: Project Archive
-                    </div>
+            <div className="space-y-32">
+                {projects.map((project, index) => (
+                    <motion.div
+                        key={project.title}
+                        initial={{ opacity: 0, y: 80 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="flex flex-col"
+                    >
 
-                    <h2 className="text-5xl md:text-7xl font-comic text-ink shadow-comic-hard-cyan tracking-tighter -rotate-1">
-                        THE BLOCKBUSTERS
-                    </h2>
-
-                    <div className="max-w-2xl bg-white/5 border-2 border-ink p-8 shadow-comic-hard-yellow relative group">
-                        <div className="absolute -top-4 -right-4 w-12 h-12 bg-comic-red border-2 border-ink flex items-center justify-center -rotate-12 shadow-comic-dark group-hover:rotate-0 transition-transform">
-                            <Lock className="text-noir" size={24} />
-                        </div>
-
-                        <div className="space-y-6 text-left">
-                            <div className="flex items-center gap-4 border-b border-white/10 pb-4">
-                                <div className="w-12 h-12 bg-comic-cyan flex items-center justify-center border-2 border-ink shadow-comic-dark">
-                                    <Cpu className="text-noir" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-white tracking-widest">PROJECTS UNDER REVIEW</h3>
-                                    <p className="text-xs text-slate-500 uppercase font-mono">Status: Declassified but Redacted</p>
-                                </div>
-                            </div>
-
-                            <p className="text-slate-400 font-serif text-lg leading-relaxed italic">
-                                "The files are currently being scrubbed of all student-level remnants. We are preparing to declassify real-world productions shortly. The portfolio is evolving."
-                            </p>
-
-                            <div className="grid grid-cols-2 gap-4 mt-8">
-                                <div className="p-4 bg-black/40 border border-white/5 space-y-2">
-                                    <div className="w-full h-1 bg-white/10 relative overflow-hidden">
-                                        <motion.div
-                                            animate={{ x: ['-100%', '100%'] }}
-                                            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-                                            className="absolute inset-0 bg-comic-cyan w-1/3"
-                                        />
-                                    </div>
-                                    <p className="text-[10px] font-mono text-slate-500">OPTIMIZING_ARCHITECTURE.PY</p>
-                                </div>
-                                <div className="p-4 bg-black/40 border border-white/5 space-y-2">
-                                    <div className="w-full h-1 bg-white/10 relative overflow-hidden">
-                                        <motion.div
-                                            animate={{ x: ['-100%', '100%'] }}
-                                            transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                                            className="absolute inset-0 bg-comic-yellow w-1/3"
-                                        />
-                                    </div>
-                                    <p className="text-[10px] font-mono text-slate-500">CLEANING_DATABASE.SQL</p>
+                        {/* Project Header Info */}
+                        <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 px-4 relative z-10">
+                            <div className="flex items-center gap-4 flex-wrap">
+                                <h3 className="text-4xl md:text-5xl font-comic tracking-wider text-ink">{project.title}</h3>
+                                <div className="px-4 py-2 border-2 border-ink bg-comic-cyan text-noir text-sm font-bold uppercase tracking-widest flex items-center gap-2 shadow-comic-dark -rotate-2">
+                                    <span className="w-2 h-2 rounded-none bg-ink animate-pulse"></span>
+                                    {project.badge}
                                 </div>
                             </div>
+                            <div className="text-slate-400 font-bold uppercase tracking-widest bg-noir border-2 border-ink px-3 py-1 shadow-comic-dark">
+                                {project.period}
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="pt-8 flex flex-col items-center gap-4">
-                        <div className="flex items-center gap-4 text-slate-500 font-mono text-xs">
-                            <span className="w-2 h-2 rounded-full bg-comic-cyan animate-pulse"></span>
-                            Awaiting Real-World Production Data
+                        {/* Huge Project Card Area */}
+                        <div className={`w-full rounded-none border-4 border-ink shadow-comic-hard-yellow relative group p-8 md:p-12 min-h-[500px] flex flex-col justify-end bg-noir overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:-translate-x-2`}>
+
+                            {/* The actual product mockup image */}
+                            <div className="absolute inset-0 w-full h-full opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                                <motion.img
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ duration: 0.7 }}
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-full object-cover object-top opacity-60 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
+                                />
+                                {/* Gradient overlay for text legibility */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            </div>
+
+                            {/* Inner Info Overlay */}
+                            <div className="relative z-10 max-w-2xl">
+                                <p className="text-ink text-lg md:text-xl font-bold mb-6 leading-relaxed bg-noir border-2 border-ink p-4 shadow-comic-dark inline-block">
+                                    {project.description}
+                                </p>
+
+                                <div className="flex gap-4">
+                                    <a href={project.demoUrl} className="flex items-center gap-2 px-6 py-3 border-4 border-ink bg-comic-red text-ink font-comic text-2xl tracking-wider hover:bg-comic-yellow transition-colors shadow-comic-dark -rotate-2 hover:rotate-0">
+                                        PREMIERE <ExternalLink size={24} />
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <button className="px-8 py-3 bg-white/5 border border-white/20 text-slate-400 font-bold uppercase tracking-widest text-sm hover:bg-comic-cyan hover:text-noir hover:border-ink transition-all flex items-center gap-2">
-                            <Eye size={16} />
-                            Request Early Access
-                        </button>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                ))}
             </div>
-
-            {/* Subtle Vignette Overlay */}
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)] opacity-60"></div>
         </section>
     );
 };

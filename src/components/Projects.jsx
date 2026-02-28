@@ -11,7 +11,7 @@ const Projects = () => {
             description: 'A classic CLI script for sorting and ranking cinematic masterpieces. My first foray into user-driven data structures.',
             image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1200',
             bgColor: 'bg-slate-900',
-            demoUrl: 'https://raw.githubusercontent.com/kabilesh-coding-07/post-cv/main/projects/movie_ranker.py',
+            demoUrl: 'https://raw.githubusercontent.com/kabilesh-coding-07/movie-ranker/main/main.py',
         },
         {
             title: 'CINE-TODO CHECKLIST',
@@ -20,7 +20,7 @@ const Projects = () => {
             description: 'The mission-critical checklist for every aspiring director. A simple yet effective Python task manager.',
             image: 'https://images.unsplash.com/photo-1512070679279-8988d32161be?auto=format&fit=crop&q=80&w=1200',
             bgColor: 'bg-indigo-950',
-            demoUrl: 'https://raw.githubusercontent.com/kabilesh-coding-07/post-cv/main/projects/cine_todo.py',
+            demoUrl: 'https://raw.githubusercontent.com/kabilesh-coding-07/cine-todo/main/main.py',
         },
         {
             title: 'SCRIPT ANALYSER',
@@ -29,7 +29,7 @@ const Projects = () => {
             description: 'Semantic inspector for film scripts. Analyzes word frequency and detects "Noir" thematic elements.',
             image: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=1200',
             bgColor: 'bg-noir',
-            demoUrl: 'https://raw.githubusercontent.com/kabilesh-coding-07/post-cv/main/projects/script_analyzer.py',
+            demoUrl: 'https://raw.githubusercontent.com/kabilesh-coding-07/script-analyzer/main/main.py',
         }
     ];
 

@@ -362,39 +362,47 @@ const Projects = () => {
                 ))}
             </div>
 
-            {/* INTERACTIVE PROJECT OVERLAYS (UNIQUE SKINS) */}
+            {/* PROFESSIONAL PROJECT OVERLAY */}
             <AnimatePresence mode="wait">
                 {activeProject && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
+                        className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
                     >
                         <motion.div
-                            initial={{ scale: 0.9, y: 50 }}
-                            animate={{ scale: 1, y: 0 }}
-                            exit={{ scale: 0.9, y: 50, opacity: 0 }}
-                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                            className="w-full max-w-4xl flex items-center justify-center"
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            className="bg-noir border-2 border-white/10 w-full max-w-4xl h-[650px] flex flex-col relative shadow-[0_40px_100px_rgba(0,0,0,0.8)] overflow-hidden"
                         >
-                            {activeProject.id === 'ranker' && (
-                                <RetroWin95Wrapper title="MOVIE RANKER v1.0" onClose={() => setActiveProject(null)}>
-                                    <MovieRankerSim />
-                                </RetroWin95Wrapper>
-                            )}
+                            {/* Pro Header */}
+                            <div className="bg-white/5 p-4 flex justify-between items-center border-b border-white/10">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-2 h-2 rounded-full bg-comic-cyan shadow-[0_0_10px_#00f0ff]"></div>
+                                    <span className="text-xs font-bold tracking-widest uppercase text-white/80">{activeProject.title} // V.4.0</span>
+                                </div>
+                                <button
+                                    onClick={() => setActiveProject(null)}
+                                    className="text-slate-500 hover:text-white transition-colors"
+                                >
+                                    <X size={20} />
+                                </button>
+                            </div>
 
-                            {activeProject.id === 'todo' && (
-                                <LegalPadWrapper onClose={() => setActiveProject(null)}>
-                                    <CineTodoSim />
-                                </LegalPadWrapper>
-                            )}
+                            {/* Simulation Content */}
+                            <div className="flex-1 p-8 overflow-y-auto custom-scrollbar bg-gradient-to-b from-transparent to-black/30">
+                                {activeProject.id === 'noirstream' && <NoirStreamSim />}
+                                {activeProject.id === 'cinelens' && <CineLensSim />}
+                                {activeProject.id === 'scriptgpt' && <ScriptGPTSim />}
+                            </div>
 
-                            {activeProject.id === 'analyzer' && (
-                                <BIOSWrapper title="SCRIPT_ANALYZER_CORE.EXE" onClose={() => setActiveProject(null)}>
-                                    <ScriptAnalyzerSim />
-                                </BIOSWrapper>
-                            )}
+                            {/* Pro Footer */}
+                            <div className="p-4 bg-white/[0.02] border-t border-white/10 flex justify-between items-center text-[10px] font-mono tracking-widest text-slate-600">
+                                <span>SESSION_ACTIVE // ENCRYPTION_SHA256</span>
+                                <span className="text-comic-cyan">K_PROTO_X_09</span>
+                            </div>
                         </motion.div>
                     </motion.div>
                 )}

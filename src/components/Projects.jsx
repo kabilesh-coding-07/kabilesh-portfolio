@@ -5,22 +5,31 @@ import { ExternalLink, Github } from 'lucide-react';
 const Projects = () => {
     const projects = [
         {
-            title: 'E-Commerce Dashboard',
-            period: 'Jan 2024 — Present',
+            title: 'MOVIE RANKER v1.0',
+            period: 'COLLEGE ERA',
             badge: 'Feature Presentation',
-            description: 'A comprehensive admin dashboard with real-time analytics, inventory management, and data visualizations.',
-            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
+            description: 'A classic CLI script for sorting and ranking cinematic masterpieces. My first foray into user-driven data structures.',
+            image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1200',
             bgColor: 'bg-slate-900',
-            demoUrl: '#',
+            demoUrl: 'https://raw.githubusercontent.com/kabilesh-coding-07/post-cv/main/projects/movie_ranker.py',
         },
         {
-            title: 'AI Productivity Tool',
-            period: 'Oct 2023 — Dec 2023',
+            title: 'CINE-TODO CHECKLIST',
+            period: 'COLLEGE ERA',
             badge: 'Origin Story',
-            description: 'An AI-powered application that helps teams organize workflows seamlessly with NLP.',
-            image: 'https://images.unsplash.com/photo-1664575602276-acd073f104c1?auto=format&fit=crop&q=80&w=1200',
+            description: 'The mission-critical checklist for every aspiring director. A simple yet effective Python task manager.',
+            image: 'https://images.unsplash.com/photo-1512070679279-8988d32161be?auto=format&fit=crop&q=80&w=1200',
             bgColor: 'bg-indigo-950',
-            demoUrl: '#',
+            demoUrl: 'https://raw.githubusercontent.com/kabilesh-coding-07/post-cv/main/projects/cine_todo.py',
+        },
+        {
+            title: 'SCRIPT ANALYSER',
+            period: 'COLLEGE ERA',
+            badge: 'Director\'s Cut',
+            description: 'Semantic inspector for film scripts. Analyzes word frequency and detects "Noir" thematic elements.',
+            image: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=1200',
+            bgColor: 'bg-noir',
+            demoUrl: 'https://raw.githubusercontent.com/kabilesh-coding-07/post-cv/main/projects/script_analyzer.py',
         }
     ];
 

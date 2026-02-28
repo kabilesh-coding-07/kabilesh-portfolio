@@ -7,276 +7,183 @@ const Projects = () => {
 
     const projects = [
         {
-            id: 'ranker',
-            title: 'MOVIE RANKER v1.0',
-            period: 'COLLEGE ERA',
-            badge: 'Feature Presentation',
-            description: 'A classic CLI script for sorting and ranking cinematic masterpieces. My first foray into user-driven data structures.',
-            image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1200',
+            id: 'noirstream',
+            title: 'NOIRSTREAM API GATEWAY',
+            period: 'PROFESSIONAL PRODUCTION',
+            badge: 'Backend Architecture',
+            description: 'A high-performance Django REST Framework gateway for a fictional cinematic streaming engine. Features JWT auth, PostgreSQL optimization, and auto-generated documentation.',
+            image: 'https://images.unsplash.com/photo-1558486012-817176f84c6d?auto=format&fit=crop&q=80&w=1200',
+            bgColor: 'bg-noir',
+        },
+        {
+            id: 'cinelens',
+            title: 'CINELENS ANALYTICS',
+            period: 'DATA ENGINEERING',
+            badge: 'Insight Engine',
+            description: 'Python-driven data visualization engine consuming TMDB API to track global cinematic trends. Built with Pandas and custom React-integrated analytics.',
+            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
             bgColor: 'bg-slate-900',
         },
         {
-            id: 'todo',
-            title: 'CINE-TODO CHECKLIST',
-            period: 'COLLEGE ERA',
-            badge: 'Origin Story',
-            description: 'The mission-critical checklist for every aspiring director. A simple yet effective Python task manager.',
-            image: 'https://images.unsplash.com/photo-1512070679279-8988d32161be?auto=format&fit=crop&q=80&w=1200',
-            bgColor: 'bg-indigo-950',
-        },
-        {
-            id: 'analyzer',
-            title: 'SCRIPT ANALYSER',
-            period: 'COLLEGE ERA',
-            badge: 'Director\'s Cut',
-            description: 'Semantic inspector for film scripts. Analyzes word frequency and detects "Noir" thematic elements.',
-            image: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=1200',
-            bgColor: 'bg-noir',
+            id: 'scriptgpt',
+            title: 'SCRIPT-GPT ENGINE',
+            period: 'AI / LLM INTEGRATION',
+            badge: 'Future Tech',
+            description: 'An AI script supervisor powered by Gemini/OpenAI models. Real-time semantic analysis and character arc critique for professional screenplays.',
+            image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200',
+            bgColor: 'bg-black',
         }
     ];
 
-    // --- UNIQUE UI WRAPPERS ---
-
-    const RetroWin95Wrapper = ({ title, children, onClose }) => (
-        <div className="bg-[#c0c0c0] border-t-2 border-l-2 border-white border-b-2 border-r-2 border-[#808080] shadow-[2px_2px_0px_#000] p-1 w-full max-w-2xl h-[500px] flex flex-col font-sans select-none overflow-hidden">
-            {/* Title Bar */}
-            <div className="bg-[#000080] text-white p-1 flex justify-between items-center text-xs px-2 font-bold mb-1">
-                <div className="flex items-center gap-1">
-                    <div className="w-3 h-3 bg-[#c0c0c0] border border-white"></div>
-                    <span className="tracking-tighter">{title}</span>
-                </div>
-                <div className="flex gap-1">
-                    <button className="w-4 h-4 bg-[#c0c0c0] border-t border-l border-white border-b border-r border-[#808080] text-[#000] flex items-center justify-center text-[10px]"><Minus size={10} /></button>
-                    <button className="w-4 h-4 bg-[#c0c0c0] border-t border-l border-white border-b border-r border-[#808080] text-[#000] flex items-center justify-center text-[10px]"><Square size={8} /></button>
-                    <button onClick={onClose} className="w-4 h-4 bg-[#c0c0c0] border-t border-l border-white border-b border-r border-[#808080] text-[#000] flex items-center justify-center text-[10px] font-bold">X</button>
-                </div>
-            </div>
-            {/* Menu Bar */}
-            <div className="flex gap-4 text-xs text-[#000] mb-1 px-1 border-b border-[#808080] pb-1 font-normal">
-                <span>File</span><span>Edit</span><span>Search</span><span>Help</span>
-            </div>
-            {/* Content Area */}
-            <div className="flex-1 bg-white border-t border-l border-[#808080] border-b border-r border-white p-4 overflow-y-auto text-[#000] custom-scrollbar-win95">
-                {children}
-            </div>
-            {/* Status Bar */}
-            <div className="mt-1 border-t border-white border-l border-white border-b border-[#808080] border-r border-[#808080] px-2 py-0.5 text-[10px] text-[#000] flex justify-between bg-[#c0c0c0]">
-                <span>Status: READY</span>
-                <span className="border-l border-[#808080] pl-2">C:\COLLEGE\PY\</span>
-            </div>
-        </div>
-    );
-
-    const LegalPadWrapper = ({ children, onClose }) => (
-        <div className="bg-[#fff9c4] border-l-[30px] border-[#ef5350] shadow-[10px_10px_30px_rgba(0,0,0,0.2)] w-full max-w-2xl h-[600px] flex flex-col relative rotate-1 group p-8 pt-4">
-            <button
-                onClick={onClose}
-                className="absolute top-4 right-4 text-[#ef5350] hover:scale-110 transition-transform p-2 z-10"
-            >
-                <X size={32} strokeWidth={3} />
-            </button>
-            <div className="absolute top-0 left-[-30px] right-0 h-1 bg-[#8d1c1c] opacity-10"></div>
-            {/* Ruled Lines */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ backgroundImage: 'linear-gradient(#90caf9 1px, transparent 1px)', backgroundSize: '100% 28px', marginTop: '40px' }}></div>
-
-            <div className="flex-1 relative z-10 font-serif text-[#37474f] leading-[28px]">
-                {children}
-            </div>
-            <div className="absolute bottom-4 left-0 right-0 text-center opacity-20 pointer-events-none">
-                <p className="text-xs font-serif italic text-slate-800 tracking-widest uppercase">Property of Student 07 // Internal Use Only</p>
-            </div>
-        </div>
-    );
-
-    const BIOSWrapper = ({ title, children, onClose }) => (
-        <div className="bg-[#000000] border-4 border-[#00ff00] w-full max-w-3xl h-[550px] flex flex-col p-6 font-mono text-[#00ff00] relative shadow-[0_0_20px_rgba(0,255,0,0.2)] overflow-hidden">
-            <button
-                onClick={onClose}
-                className="absolute top-4 right-4 text-[#00ff00] hover:bg-[#003300] p-1 border border-[#00ff00]"
-            >
-                <X size={20} />
-            </button>
-            <div className="mb-6 opacity-80 text-[10px]">
-                <p>ROM BIOS VERSION 1.0.4 - COPYRIGHT (C) 2007</p>
-                <p>CPU: PYTHON INTERPRETER v2.7 ENABLED</p>
-                <p>MEMORY TEST: 640K OK</p>
-                <p>BOOT DEVICE: DISKETTE 1 [LOADING...]</p>
-                <p className="mt-2 tracking-widest">----------------------------------------------------</p>
-            </div>
-            <h2 className="text-sm font-bold border-b border-[#00ff00] pb-2 mb-4 tracking-[0.2em]">{title}</h2>
-            <div className="flex-1 overflow-y-auto custom-scrollbar-bios text-sm leading-relaxed">
-                {children}
-            </div>
-            <div className="mt-4 text-[10px] animate-pulse">
-                _ SYSTEM READY | CURSOR_LOCK ACTIVE
-            </div>
-            {/* Subtle crt line overlay */}
-            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(transparent_0%,rgba(0,255,0,0.05)_50%,transparent_100%)] bg-[length:100%_4px] opacity-20"></div>
-        </div>
-    );
-
-    // --- RE-CODED SIMULATIONS WITH THEME-NEUTRAL LOGIC ---
-
-    const MovieRankerSim = () => {
-        const [movies, setMovies] = useState([]);
-        const [input, setInput] = useState('');
-
-        const addMovie = (e) => {
-            e.preventDefault();
-            if (input.trim()) {
-                setMovies([...movies, input.trim()]);
-                setInput('');
-            }
-        };
-
-        return (
-            <div className="space-y-4 text-black font-sans">
-                <p className="font-bold underline text-sm border-b border-black pb-1 mb-4">MOVIE_RANKER.EXE - COLLEGIATE EDITION</p>
-                <p className="text-xs italic text-slate-600 mb-4">Input movie titles to finalize the end-of-year selection.</p>
-
-                <form onSubmit={addMovie} className="space-y-2">
-                    <label className="text-xs font-bold uppercase block">Add Entry:</label>
-                    <div className="flex gap-2">
-                        <input
-                            autoFocus
-                            type="text"
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            className="flex-1 bg-white border-2 border-[#808080] border-t-black border-l-black px-2 py-1 text-sm outline-none"
-                        />
-                        <button type="submit" className="bg-[#c0c0c0] border-2 border-white border-b-[#808080] border-r-[#808080] px-4 py-1 text-xs font-bold active:border-[#808080] active:border-b-white active:border-r-white transition-all">
-                            ADD
-                        </button>
-                    </div>
-                </form>
-
-                <div className="mt-6 border-2 border-[#808080] border-t-black border-l-black p-3 bg-white h-48 overflow-y-auto shadow-inner">
-                    <table className="w-full text-xs text-left">
-                        <thead>
-                            <tr className="bg-[#000080] text-white">
-                                <th className="px-1 border-r border-[#c0c0c0]">#</th>
-                                <th className="px-2">MOVIE_TITLE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {movies.map((m, i) => (
-                                <tr key={i} className={i % 2 === 0 ? 'bg-[#f0f0f0]' : 'bg-white'}>
-                                    <td className="px-1 border-r border-slate-200">{i + 1}</td>
-                                    <td className="px-2">{m.toUpperCase()}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    {movies.length === 0 && <p className="text-slate-400 p-2 text-[10px]">No entries found in database.</p>}
-                </div>
-            </div>
-        );
-    };
-
-    const CineTodoSim = () => {
-        const [tasks, setTasks] = useState([
-            { text: "Script Analysis", done: true },
-            { text: "Location Scouting", done: false },
-            { text: "Final Edit Review", done: false }
+    // NOIRSTREAM API SIMULATION
+    const NoirStreamSim = () => {
+        const [requests, setRequests] = useState([
+            { method: 'GET', path: '/api/v1/movies/', status: 200, time: '12ms' },
+            { method: 'POST', path: '/api/v1/auth/login/', status: 201, time: '45ms' }
         ]);
 
-        const toggle = (idx) => {
-            const newTasks = [...tasks];
-            newTasks[idx].done = !newTasks[idx].done;
-            setTasks(newTasks);
+        const fireRequest = () => {
+            const methods = ['GET', 'POST', 'PATCH', 'DELETE'];
+            const paths = ['/users/', '/scripts/', '/genres/', '/production/'];
+            const newReq = {
+                method: methods[Math.floor(Math.random() * methods.length)],
+                path: `/api/v1${paths[Math.floor(Math.random() * paths.length)]}`,
+                status: 200,
+                time: `${Math.floor(Math.random() * 50) + 5}ms`
+            };
+            setRequests([newReq, ...requests].slice(0, 5));
         };
 
         return (
-            <div className="space-y-8 text-[#37474f]">
-                <h3 className="text-4xl font-serif font-bold underline decoration-[#ef5350] underline-offset-8 decoration-4">Project Milestones</h3>
-                <div className="space-y-3 mt-8">
-                    {tasks.map((t, i) => (
-                        <div key={i} onClick={() => toggle(i)} className="flex items-center gap-4 cursor-pointer group">
-                            <div className={`w-8 h-8 border-2 border-[#546e7a]/40 rounded-sm flex items-center justify-center transition-colors ${t.done ? 'bg-[#546e7a]/20' : 'bg-transparent'}`}>
-                                {t.done && <X size={24} color="#ef5350" strokeWidth={3} className="rotate-12" />}
-                            </div>
-                            <span className={`text-2xl font-serif tracking-tight ${t.done ? 'opacity-40 italic' : 'text-[#263238]'} group-hover:text-black transition-colors`}>
-                                {t.text}
-                            </span>
+            <div className="space-y-4 font-mono text-xs">
+                <div className="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span className="text-comic-cyan font-bold">API STATUS: OPERATIONAL</span>
+                    <button onClick={fireRequest} className="bg-white text-black px-2 py-0.5 font-bold hover:bg-comic-cyan transition-colors">TEST_ENDPOINT</button>
+                </div>
+                <div className="space-y-1">
+                    {requests.map((r, i) => (
+                        <div key={i} className="flex gap-4 p-2 bg-white/5 border-l-2 border-comic-cyan animate-in slide-in-from-left-2 transition-all">
+                            <span className={`font-black ${r.method === 'GET' ? 'text-green-400' : 'text-yellow-400'}`}>{r.method}</span>
+                            <span className="text-slate-400">{r.path}</span>
+                            <span className="ml-auto text-comic-cyan">{r.status}</span>
+                            <span className="text-slate-500 w-10 text-right">{r.time}</span>
                         </div>
                     ))}
                 </div>
-
-                <div className="mt-20 pt-10 relative">
-                    <div className="absolute top-0 left-0 w-24 h-0.5 bg-blue-200"></div>
-                    <p className="text-red-600 font-serif italic text-2xl font-black transform -rotate-3 border-4 border-red-600 px-4 py-2 inline-block">FINAL SUBMISSION: MAR_30</p>
+                <div className="mt-8 p-3 bg-black/50 border border-white/5 opacity-50">
+                    <p className="text-[10px] text-slate-500 mb-1 tracking-widest uppercase">Schema Preview (Swagger):</p>
+                    <p className="text-white">{"{ 'jwt': '********', 'scope': 'READ_WRITE', 'role': 'ARCHITECT' }"}</p>
                 </div>
             </div>
         );
     };
 
-    const ScriptAnalyzerSim = () => {
-        const [text, setText] = useState('');
-        const [results, setResults] = useState(null);
-        const [isScanning, setIsScanning] = useState(false);
+    // CINELENS ANALYTICS SIMULATION
+    const CineLensSim = () => {
+        const [activeTrend, setActiveTrend] = useState('Genre');
+        const data = [45, 80, 60, 95, 40, 70];
 
-        const analyze = () => {
-            setIsScanning(true);
+        return (
+            <div className="space-y-6">
+                <div className="flex gap-4 border-b border-white/10 pb-2">
+                    {['Genre', 'Production', 'ROI'].map(t => (
+                        <button
+                            key={t}
+                            onClick={() => setActiveTrend(t)}
+                            className={`text-xs font-bold tracking-widest transition-colors ${activeTrend === t ? 'text-comic-cyan border-b-2 border-comic-cyan' : 'text-slate-500 hover:text-white'}`}
+                        >
+                            {t.toUpperCase()}
+                        </button>
+                    ))}
+                </div>
+
+                <div className="flex items-end gap-2 h-40 pt-4">
+                    {data.map((h, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ height: 0 }}
+                            animate={{ height: `${h}%` }}
+                            transition={{ delay: i * 0.1, duration: 1 }}
+                            className={`flex-1 ${i === 3 ? 'bg-comic-cyan' : 'bg-white/20'} relative group`}
+                        >
+                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono opacity-0 group-hover:opacity-100 transition-opacity">
+                                {h}%
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="p-3 bg-white/5 border border-white/10">
+                        <p className="text-[10px] text-slate-500 uppercase font-mono mb-1 tracking-tighter">Correlations</p>
+                        <p className="text-xl font-bold font-mono">0.892</p>
+                    </div>
+                    <div className="p-3 bg-white/5 border border-white/10">
+                        <p className="text-[10px] text-slate-500 uppercase font-mono mb-1 tracking-tighter">Variance</p>
+                        <p className="text-xl font-bold font-mono text-comic-cyan">0.04</p>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    // SCRIPT-GPT ENGINE SIMULATION
+    const ScriptGPTSim = () => {
+        const [messages, setMessages] = useState([
+            { role: 'SYSTEM', content: 'SCRIPT_ENGINE LOADED. UPLOAD SCREENPLAY SNIPPET.' }
+        ]);
+        const [input, setInput] = useState('');
+        const [isThinking, setIsThinking] = useState(false);
+
+        const sendMessage = (e) => {
+            e.preventDefault();
+            if (!input.trim() || isThinking) return;
+
+            const userMsg = { role: 'USER', content: input };
+            setMessages([...messages, userMsg]);
+            setInput('');
+            setIsThinking(true);
+
             setTimeout(() => {
-                const words = text.trim().split(/\s+/).filter(w => w.length > 0);
-                setResults({
-                    total: words.length,
-                    unique: new Set(words.map(w => w.toLowerCase())).size,
-                    noir: text.toLowerCase().includes('noir')
-                });
-                setIsScanning(false);
-            }, 1000);
+                const responses = [
+                    "Analysis complete: Tone is consistently Noir. Recommendation: Increase subtext in Act II.",
+                    "Character Arc Evaluation: protagonist motivation lacks clear conflict. Semantic score: 8.4/10.",
+                    "Pacing Scan: Scene 14 is elongated. Suggest cutting dialogue by 20% for urgency."
+                ];
+                const aiMsg = { role: 'AI', content: responses[Math.floor(Math.random() * responses.length)] };
+                setMessages(prev => [...prev, aiMsg]);
+                setIsThinking(false);
+            }, 1500);
         };
 
         return (
-            <div className="space-y-4 font-mono">
-                <p className="text-[#00ff00] blink">{"> SYSTEM_INIT_READY..."}</p>
-                <div className="relative group">
-                    <textarea
+            <div className="flex flex-col h-full space-y-4">
+                <div className="flex-1 space-y-4 overflow-y-auto custom-scrollbar pr-2 min-h-0">
+                    {messages.map((m, i) => (
+                        <div key={i} className={`flex flex-col ${m.role === 'USER' ? 'items-end' : 'items-start'}`}>
+                            <span className="text-[8px] font-mono opacity-30 mb-1">{m.role}</span>
+                            <div className={`p-3 text-xs font-mono max-w-[80%] ${m.role === 'USER' ? 'bg-comic-cyan text-noir font-bold' : 'bg-white/5 border border-white/10 text-white'}`}>
+                                {m.content}
+                            </div>
+                        </div>
+                    ))}
+                    {isThinking && <p className="text-[10px] font-mono animate-pulse text-comic-cyan italic tracking-widest flex items-center gap-2">
+                        <RefreshCcw size={10} className="animate-spin" /> THINKING...
+                    </p>}
+                </div>
+                <form onSubmit={sendMessage} className="relative mt-auto">
+                    <input
                         autoFocus
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
-                        placeholder="[INPUT_SCRIPT_DATA_HERE]"
-                        className="w-full h-32 bg-[#001100] border-2 border-[#00ff00] p-4 text-[#00ff00] text-sm outline-none resize-none placeholder:text-[#00ff00]/20 focus:shadow-[0_0_10px_rgba(0,255,0,0.5)] transition-all"
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="INPUT SCRIPT METADATA..."
+                        className="w-full bg-noir border-2 border-white/10 p-3 pl-4 pr-12 text-xs font-mono outline-none focus:border-comic-cyan transition-colors"
                     />
-                    <div className="absolute bottom-2 right-2 text-[8px] opacity-30 text-[#00ff00]">64kb Free</div>
-                </div>
-
-                <div className="flex gap-4">
-                    <button
-                        onClick={analyze}
-                        disabled={!text || isScanning}
-                        className="flex-1 py-3 border-2 border-[#00ff00] text-[#00ff00] font-bold hover:bg-[#00ff00] hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed group relative overflow-hidden"
-                    >
-                        <span className="relative z-10">{isScanning ? '[PROCESSING_DATA...]' : '[EXECUTE_ANALYSIS]'}</span>
+                    <button disabled={isThinking} className="absolute right-3 top-1/2 -translate-y-1/2 text-comic-cyan">
+                        <ChevronRight size={18} />
                     </button>
-                    <button
-                        onClick={() => { setText(''); setResults(null); }}
-                        className="px-4 py-3 border-2 border-[#00ff00]/30 text-[#00ff00]/30 hover:text-[#00ff00] hover:border-[#00ff00] transition-all"
-                    >
-                        [CLR]
-                    </button>
-                </div>
-
-                {results && !isScanning && (
-                    <div className="mt-8 border-2 border-[#00ff00] p-6 bg-[#001100] shadow-[inset_0_0_20px_rgba(0,255,0,0.2)]">
-                        <div className="flex justify-between items-center mb-6">
-                            <span className="bg-[#00ff00] text-black px-2 py-0.5 text-[10px] font-bold">REPORT_0x4F2</span>
-                            <span className="text-[10px] opacity-50">SYNC_OK</span>
-                        </div>
-                        <div className="space-y-2 text-xs">
-                            <p><span className="opacity-50 tracking-widest">METRIC_ONE:</span> TOTAL_WORD_COUNT......[{results.total}]</p>
-                            <p><span className="opacity-50 tracking-widest">METRIC_TWO:</span> UNIQUE_NODES........[{results.unique}]</p>
-                            <div className="h-px bg-[#00ff00]/30 my-4"></div>
-                            <p className="text-sm font-bold flex items-center gap-4">
-                                NOIR_CONTEXT:
-                                <span className={results.noir ? 'text-black bg-[#00ff00] px-4 font-black' : 'opacity-40'}>
-                                    {results.noir ? 'TRUE' : 'FALSE_NOT_FOUND'}
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                )}
+                </form>
             </div>
         );
     };

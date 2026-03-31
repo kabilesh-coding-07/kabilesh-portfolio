@@ -109,11 +109,11 @@ const Contact = ({ isCinephile }) => {
                             whileHover={{ scale: 1.05 }}
                             className={`mt-8 w-full max-w-sm border-2 p-6 relative group transition-all duration-700 overflow-hidden text-left rounded-2xl shadow-2xl ${isCinephile ? 'bg-slate-900 border-slate-700 hover:border-comic-cyan' : 'glass-elegant border-white/40 shadow-elegant'}`}>
                             <div className={`absolute top-0 left-0 w-full h-1 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-in-out ${isCinephile ? 'bg-comic-cyan' : 'bg-elegant-gold'}`}></div>
-                            <div className={`flex items-center gap-3 mb-4 ${isCinephile ? 'text-comic-yellow' : 'text-elegant-gold'}`}>
-                                <Terminal size={18} />
-                                <span className="font-black uppercase tracking-[0.3em] text-[10px]">{isCinephile ? 'System Terminal_' : 'Access Protocol_'}</span>
+                            <div className={`flex items-center gap-3 mb-3 sm:mb-4 ${isCinephile ? 'text-comic-yellow' : 'text-elegant-gold'}`}>
+                                <Terminal size={16} className="sm:w-[18px] sm:h-[18px]" />
+                                <span className="font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[9px] sm:text-[10px]">{isCinephile ? 'System Terminal_' : 'Access_Protocol_'}</span>
                             </div>
-                            <p className={`font-mono text-xs leading-relaxed ${isCinephile ? 'text-slate-400' : 'text-elegant-dark/60'}`}>
+                            <p className={`font-mono text-[10px] sm:text-xs leading-relaxed ${isCinephile ? 'text-slate-400' : 'text-elegant-dark/60'}`}>
                                 &gt; {isCinephile ? 'TRACING CONNECTION...' : 'VERIFYING SIGNATURE...'} <br />
                                 &gt; {isCinephile ? 'FIREWALL BYPASSED.' : 'IDENTITY CONFIRMED.'}<br />
                                 &gt; STATUS: <span className={`transition-colors group-hover:animate-pulse font-bold ${isCinephile ? 'text-white group-hover:text-comic-cyan' : 'text-elegant-dark'}`}>{isCinephile ? 'READY FOR MISSIONS' : 'READY FOR COLLABORATION'}</span><span className={`animate-pulse inline-block ml-1 font-bold ${isCinephile ? 'text-comic-cyan' : 'text-elegant-gold'}`}>_</span>

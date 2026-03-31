@@ -173,11 +173,11 @@ const PrototypeLoader = ({ onComplete }) => {
         transition={{ duration: 0.8 }}
         className="text-center"
       >
-        <span className="text-elegant-gold/40 font-black tracking-[1em] uppercase text-[10px] mb-4 block">Initialization</span>
-        <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif text-white italic tracking-tighter mb-8 transition-all">
+        <span className="text-elegant-gold/40 font-black tracking-[1em] uppercase text-[9px] sm:text-[10px] mb-4 block">Initialization</span>
+        <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif text-white italic tracking-tighter mb-6 sm:mb-8 transition-all">
             KM.<span className="text-elegant-gold">01</span>
         </h1>
-        <div className="w-64 h-px bg-white/10 relative overflow-hidden">
+        <div className="w-48 sm:w-64 h-px bg-white/10 relative overflow-hidden mx-auto">
           <motion.div 
             initial={{ x: '-100%' }}
             animate={{ x: '100%' }}

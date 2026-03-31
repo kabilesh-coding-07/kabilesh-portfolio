@@ -62,7 +62,7 @@ const Experience = ({ isCinephile }) => {
                     <p className="text-elegant-gold tracking-[0.2em] uppercase text-sm font-bold">A journey through development and design</p>
                 </motion.div>
 
-                <div className="space-y-12 sm:space-y-20 relative before:absolute before:left-[17px] md:before:left-1/2 before:top-0 before:bottom-0 before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-elegant-gold/40 before:to-transparent before:animate-pulse">
+                <div className="space-y-12 sm:space-y-20 relative before:absolute before:left-[19px] md:before:left-1/2 before:top-0 before:bottom-0 before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-elegant-gold/40 before:to-transparent before:animate-pulse">
                     {experiences.map((exp, i) => (
                         <motion.div
                             key={exp.id}
@@ -81,7 +81,7 @@ const Experience = ({ isCinephile }) => {
 
                             <motion.div 
                                 whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-                                className={`flex-1 w-full glass-elegant shimmer-gold p-6 sm:p-10 rounded-2xl sm:rounded-3xl ml-8 md:ml-0 transition-all duration-500 hover:shadow-2xl hover:shadow-elegant-gold/10 ${i % 2 === 0 ? 'md:text-right' : 'text-left'}`}
+                                className={`flex-1 w-full glass-elegant shimmer-gold p-5 sm:p-10 rounded-2xl sm:rounded-3xl ml-8 md:ml-0 transition-all duration-500 hover:shadow-2xl hover:shadow-elegant-gold/10 ${i % 2 === 0 ? 'md:text-right' : 'text-left'}`}
                             >
                                 <motion.span 
                                     className="text-elegant-gold font-black tracking-[0.3em] text-[10px] uppercase mb-4 block"
@@ -138,7 +138,7 @@ const Experience = ({ isCinephile }) => {
             <div className="w-full overflow-hidden px-6 md:px-12 py-8 pb-16">
                 <div
                     ref={scrollRef}
-                    className="flex gap-8 md:gap-12 w-max pl-4 items-center transition-transform duration-300 ease-out"
+                    className="flex gap-4 md:gap-12 w-max pl-4 items-center transition-transform duration-300 ease-out"
                 >
                     <div className="w-[85vw] md:w-[400px] snap-center flex-shrink-0 flex items-center justify-center relative border-4 border-ink bg-comic-yellow shadow-comic-hard-cyan overflow-hidden group py-16 sm:py-24 md:py-32">
                         <div className="absolute inset-0 bg-[repeating-conic-gradient(#ff003c_0_15deg,transparent_15deg_30deg)] opacity-20 group-hover:rotate-12 transition-transform duration-700"></div>
@@ -147,7 +147,7 @@ const Experience = ({ isCinephile }) => {
                             <span className="font-bold uppercase tracking-widest text-lg text-ink comic-stroke px-4 py-1 bg-white border-4 border-ink mb-4 transform rotate-6">
                                 VOL. 1
                             </span>
-                            <h3 className="text-4xl sm:text-6xl md:text-8xl font-comic tracking-tighter text-white text-center comic-stroke leading-none" style={{ textShadow: '6px 6px 0px #00f0ff, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 2px 2px 0px #000' }}>
+                            <h3 className="text-3xl sm:text-6xl md:text-8xl font-comic tracking-tighter text-white text-center comic-stroke leading-none" style={{ textShadow: '6px 6px 0px #00f0ff, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 2px 2px 0px #000' }}>
                                 THE<br />BEGINNING
                             </h3>
                         </div>
@@ -173,15 +173,15 @@ const Experience = ({ isCinephile }) => {
                                         {exp.title}
                                     </h3>
 
-                                    <div className={`mt-auto border-4 ${exp.bgColor === 'bg-ink' ? 'border-noir bg-white' : 'border-ink bg-comic-yellow'} p-4 shadow-comic-dark transform rotate-1 group-hover:-rotate-1 transition-transform`}>
-                                        <p className="font-comic text-xl leading-snug text-slate-800">
+                                    <div className={`mt-auto border-4 ${exp.bgColor === 'bg-ink' ? 'border-noir bg-white' : 'border-ink bg-comic-yellow'} p-3 md:p-4 shadow-comic-dark transform rotate-1 group-hover:-rotate-1 transition-transform`}>
+                                        <p className="font-comic text-base md:text-xl leading-snug text-slate-800">
                                             "{exp.dialogue}"
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="absolute top-1/3 -right-6 md:-right-12 transform rotate-90 opacity-20 group-hover:opacity-100 transition-opacity pointer-events-none z-0">
-                                    <span className={`font-comic text-6xl md:text-9xl ${exp.bgColor === 'bg-ink' ? 'text-comic-red' : 'text-comic-cyan'} comic-stroke whitespace-nowrap`}>
+                                    <span className={`font-comic text-5xl md:text-9xl ${exp.bgColor === 'bg-ink' ? 'text-comic-red' : 'text-comic-cyan'} comic-stroke whitespace-nowrap`}>
                                         {exp.actionText}
                                     </span>
                                 </div>

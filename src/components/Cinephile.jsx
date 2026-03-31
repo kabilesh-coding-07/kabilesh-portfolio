@@ -36,8 +36,8 @@ const Cinephile = ({ isCinephile }) => {
                 <div className={`inline-flex items-center gap-2 px-4 py-2 border-2 font-bold uppercase tracking-wider text-sm mb-6 -rotate-2 ${isCinephile ? 'border-ink bg-comic-cyan text-noir shadow-comic-dark' : 'border-elegant-gold/20 bg-elegant-ivory text-elegant-gold shadow-elegant'}`}>
                     <Clapperboard size={16} /> {isCinephile ? 'Cinephile Focus' : 'Artistic Direction'}
                 </div>
-                <h2 className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl tracking-widest mb-4 sm:mb-6 ${isCinephile ? 'font-comic text-ink comic-stroke' : 'font-serif text-elegant-dark italic'}`} style={isCinephile ? { textShadow: '4px 4px 0px #00f0ff' } : {}}>
-                    {isCinephile ? <>SIDE QUEST: <span className="text-comic-yellow">FILM CRITIC</span></> : 'A Cinematic Lens'}
+                <h2 className={`text-[1.75rem] leading-[1.2] sm:text-4xl md:text-6xl lg:text-7xl tracking-widest mb-4 sm:mb-6 ${isCinephile ? 'font-comic text-ink comic-stroke' : 'font-serif text-elegant-dark italic'}`} style={isCinephile ? { textShadow: '4px 4px 0px #00f0ff' } : {}}>
+                    {isCinephile ? <>SIDE QUEST:<br className="sm:hidden" /> <span className="text-comic-yellow">CRITIC</span></> : 'A Cinematic Lens'}
                 </h2>
 
                 <p className={`text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isCinephile ? 'text-slate-300' : 'text-slate-600 font-serif lowercase italic'}`}>

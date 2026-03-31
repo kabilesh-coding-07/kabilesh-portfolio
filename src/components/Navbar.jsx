@@ -50,8 +50,8 @@ const Navbar = ({ isCinephile, toggleTheme }) => {
                 <motion.a 
                     whileHover={!isCinephile ? { scale: 1.1, rotate: 5 } : {}}
                     href="#" 
-                    className={`w-10 h-10 sm:w-14 sm:h-14 ml-1 sm:ml-2 flex items-center justify-center transition-all duration-300 ${isCinephile 
-                        ? 'font-comic text-2xl sm:text-3xl -rotate-3 hover:rotate-3 shadow-comic-dark bg-comic-cyan text-noir border-4 border-ink shadow-[4px_4px_0px_#000]' 
+                    className={`w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center transition-all duration-300 flex-shrink-0 ${isCinephile 
+                        ? 'font-comic text-xl sm:text-3xl -rotate-3 hover:rotate-3 shadow-comic-dark bg-comic-cyan text-noir border-[3px] sm:border-4 border-ink shadow-[3px_3px_0px_#000] sm:shadow-[4px_4px_0px_#000]' 
                         : 'font-serif text-lg sm:text-2xl bg-gradient-to-br from-elegant-gold to-[#ead7b5] text-white rounded-full shadow-lg shadow-elegant-gold/20'}`}
                 >
                     KM
@@ -94,7 +94,7 @@ const Navbar = ({ isCinephile, toggleTheme }) => {
             </nav>
 
             {/* The "Satellite Command" Toggle (Posh Gold Restoration) */}
-            <div className="hidden md:flex items-center gap-2 group pointer-events-auto relative">
+            <div className="hidden md:flex flex-shrink-0 items-center gap-2 group pointer-events-auto relative">
                 <motion.div 
                     initial={{ x: 50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
@@ -285,11 +285,11 @@ const Navbar = ({ isCinephile, toggleTheme }) => {
                         </span>
                         <div 
                             onClick={toggleTheme}
-                            className={`w-12 h-6 flex items-center cursor-pointer p-0.5 rounded-full border ${isCinephile ? 'bg-noir border-comic-cyan/40' : 'bg-[#fffbf0] border-elegant-gold/40'}`}
+                            className={`w-10 h-6 flex items-center cursor-pointer p-0.5 rounded-full border ${isCinephile ? 'bg-noir border-comic-cyan/40' : 'bg-[#fffbf0] border-elegant-gold/40'}`}
                         >
                             <motion.div 
-                                animate={{ x: isCinephile ? 0 : 24 }}
-                                className={`w-4.5 h-4.5 rounded-full ${isCinephile ? 'bg-comic-cyan' : 'bg-elegant-gold'}`}
+                                animate={{ x: isCinephile ? 0 : 16 }}
+                                className={`w-4 h-4 rounded-full ${isCinephile ? 'bg-comic-cyan' : 'bg-elegant-gold'}`}
                             />
                         </div>
                     </div>

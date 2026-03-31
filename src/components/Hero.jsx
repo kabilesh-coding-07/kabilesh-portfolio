@@ -6,9 +6,9 @@ const Hero = ({ isCinephile }) => {
     return (
         <section
             id="about"
-            className="min-h-screen flex items-center pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto relative overflow-hidden"
+            className="min-h-screen flex items-center pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto relative z-10"
         >
-            <div className="w-full grid md:grid-cols-12 gap-12 items-center relative z-10">
+            <div className="w-full grid md:grid-cols-12 gap-8 md:gap-12 items-center relative z-10">
 
                 {/* Left Typography Side (Spans 7 cols) */}
                 <motion.div
@@ -18,13 +18,13 @@ const Hero = ({ isCinephile }) => {
                     className="md:col-span-7"
                 >
                     {isCinephile ? (
-                        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-comic tracking-wider text-comic-yellow comic-stroke mb-4 leading-none" style={{ textShadow: '4px 4px 0px #ff003c' }}>
+                        <h1 className="text-[2.5rem] leading-[1.1] sm:text-5xl md:text-7xl lg:text-9xl font-comic tracking-wider text-comic-yellow comic-stroke mb-4 break-words" style={{ textShadow: '4px 4px 0px #ff003c' }}>
                             KABILESH
                             <br />
-                            <span className="text-comic-cyan" style={{ textShadow: '6px 6px 0px #ffffff' }}>MANOKARAN.</span>
+                            <span className="text-comic-cyan" style={{ textShadow: '4px 4px 0px #ffffff' }}>MANOKARAN.</span>
                         </h1>
                     ) : (
-                        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-serif tracking-tight text-elegant-dark mb-4 leading-tight">
+                        <h1 className="text-[2.5rem] leading-[1.1] sm:text-5xl md:text-7xl lg:text-9xl font-serif tracking-tight text-elegant-dark mb-4 break-words">
                             <motion.span 
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}

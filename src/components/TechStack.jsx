@@ -64,7 +64,7 @@ const TechStack = ({ isCinephile }) => {
                         <motion.div 
                             animate={!isCinephile ? { y: [0, -10, 0] } : {}}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
-                            className={`w-20 h-20 rounded-2xl flex items-center justify-center mb-8 border-2 transition-all duration-500 ${isCinephile 
+                            className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 border-2 transition-all duration-500 ${isCinephile 
                                 ? 'bg-slate-800 border-ink shadow-comic-dark' 
                                 : 'bg-gradient-to-br from-white/80 to-elegant-gold/10 border-elegant-gold/30 shadow-xl group-hover:scale-110 group-hover:rotate-6'}`}
                         >

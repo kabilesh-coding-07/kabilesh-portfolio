@@ -175,10 +175,10 @@ const Projects = ({ isCinephile }) => {
                                     </div>
 
                                     {/* Integrated Poster Header (Cinephile - Refined Scale) */}
-                                    <div className="absolute top-12 left-4 right-4 z-[45] pointer-events-none">
+                                    <div className="absolute top-10 left-3 right-3 z-[45] pointer-events-none">
                                         <div className="flex flex-col gap-1">
-                                            <span className="text-[8px] font-comic text-comic-yellow tracking-[0.4em] uppercase">CASE_STUDY_0{index + 1}</span>
-                                            <h3 className="text-2xl sm:text-3xl md:text-4xl font-comic text-white drop-shadow-[3px_3px_0px_#000] tracking-tight">{project.title}</h3>
+                                            <span className="text-[7px] font-comic text-comic-yellow tracking-[0.4em] uppercase">CASE_STUDY_0{index + 1}</span>
+                                            <h3 className="text-2xl sm:text-3xl md:text-4xl font-comic text-white drop-shadow-[3px_3px_0px_#000] tracking-tight leading-none mb-1">{project.title}</h3>
                                             <div className="mt-1 inline-flex items-center gap-1.5 px-2 py-0.5 bg-comic-cyan text-noir font-comic text-[9px] rounded border-[1.5px] border-ink w-fit">
                                                 <div className="w-1 h-1 rounded-full bg-ink animate-pulse" />
                                                 {project.badge}
@@ -190,9 +190,9 @@ const Projects = ({ isCinephile }) => {
 
                             {/* Elegant Theme Header (Refined Type) */}
                             {!isCinephile && (
-                                <div className="absolute top-5 left-5 z-[45] pointer-events-none">
-                                    <span className="text-[9px] font-black text-elegant-gold/80 tracking-[0.3em] uppercase mb-1.5 block border-b border-elegant-gold/20 w-fit">SELECTED_COLLECTION_0{index + 1}</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-white italic drop-shadow-md tracking-tighter">{project.title}</h3>
+                                <div className="absolute top-4 left-4 z-[45] pointer-events-none pr-4">
+                                    <span className="text-[8px] font-black text-elegant-gold/80 tracking-[0.3em] uppercase mb-1 block border-b border-elegant-gold/20 w-fit">SELECTED_0{index + 1}</span>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-white italic drop-shadow-md tracking-tighter leading-tight">{project.title}</h3>
                                 </div>
                             )}
 

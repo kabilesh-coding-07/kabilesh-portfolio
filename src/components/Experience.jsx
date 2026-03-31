@@ -144,7 +144,7 @@ const Experience = ({ isCinephile }) => {
                         <div className="absolute inset-0 bg-[repeating-conic-gradient(#ff003c_0_15deg,transparent_15deg_30deg)] opacity-20 md:group-hover:rotate-12 transition-transform duration-700"></div>
 
                         <div className="relative z-10 flex flex-col items-center justify-center transform -rotate-12 md:group-hover:scale-110 transition-transform duration-300">
-                            <span className="font-bold uppercase tracking-widest text-lg text-ink comic-stroke px-4 py-1 bg-white border-4 border-ink mb-4 transform rotate-6">
+                            <span className="font-bold uppercase tracking-widest text-lg text-ink comic-stroke px-4 py-1 bg-noir border-4 border-ink mb-4 transform rotate-6">
                                 VOL. 1
                             </span>
                             <h3 className="text-3xl sm:text-6xl md:text-8xl font-comic tracking-tighter text-white text-center comic-stroke leading-none" style={{ textShadow: '6px 6px 0px #00f0ff, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 2px 2px 0px #000' }}>

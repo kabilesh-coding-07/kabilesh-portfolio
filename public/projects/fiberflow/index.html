@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FiberFlow | Next-Gen ISP</title>
+  <link rel="stylesheet" href="../alphery-theme.css">
+  <style>
+    :root {
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+    }
+    .hero { background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1600'); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">FiberFlow</div>
+    <div class="links">
+      <a href="#plans">Plans</a>
+      <a href="#speed">Speed Test</a>
+      <a href="#support">Support</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Light-Speed Connectivity</h1>
+    <p>Experience the ultimate in low-latency, high-bandwidth streaming and gaming with FiberFlow.</p>
+    <a href="#plans" class="btn">View Plans</a>
+  </header>
+
+  <section id="plans">
+    <h2>Choose Your Velocity</h2>
+    <div class="grid">
+      <div class="glass-panel text-center">
+        <h3 class="mb-2">Basic Flow</h3>
+        <p class="text-secondary mb-2">500 Mbps. Perfect for households.</p>
+        <p class="text-accent font-weight-bold" style="font-size: 2rem; margin: 1rem 0;">$49<span style="font-size:1rem">/mo</span></p>
+        <button class="btn mt-4" style="width:100%">Select Plan</button>
+      </div>
+      <div class="glass-panel text-center" style="border-color: var(--accent);">
+        <div style="background: var(--accent); color: #fff; padding: 0.25rem; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; border-radius: 4px; margin-bottom: 1rem;">Most Popular</div>
+        <h3 class="mb-2">Pro Flow</h3>
+        <p class="text-secondary mb-2">1 Gbps. Built for smart homes.</p>
+        <p class="text-accent font-weight-bold" style="font-size: 2rem; margin: 1rem 0;">$69<span style="font-size:1rem">/mo</span></p>
+        <button class="btn mt-4" style="width:100%">Select Plan</button>
+      </div>
+      <div class="glass-panel text-center">
+        <h3 class="mb-2">Ultra Flow</h3>
+        <p class="text-secondary mb-2">2.5 Gbps. Extreme performance.</p>
+        <p class="text-accent font-weight-bold" style="font-size: 2rem; margin: 1rem 0;">$99<span style="font-size:1rem">/mo</span></p>
+        <button class="btn mt-4" style="width:100%">Select Plan</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <h2>Check Availability</h2>
+    <form class="glass-panel" onsubmit="event.preventDefault(); alert('Good news! FiberFlow is available at your address.');">
+      <input type="text" placeholder="Enter your Zip Code" required>
+      <button type="submit" class="btn mt-4">Check Status</button>
+    </form>
+  </section>
+</body>
+</html>

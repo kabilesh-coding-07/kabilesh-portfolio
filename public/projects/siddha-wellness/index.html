@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddha Wellness | Ancient Wisdom, Digital Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --color-sand: #f4eee1;
+            --color-mud: #d4c8b8;
+            --color-copper: #c48b62;
+            --color-oak: #8b6b4a;
+            --color-forest: #2a3a29;
+            --color-charcoal: #1f1f1f;
+        }
+        
+        body {
+            background-color: var(--color-sand);
+            color: var(--color-charcoal);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        /* Custom Colors */
+        .text-copper { color: var(--color-copper); }
+        .bg-copper { background-color: var(--color-copper); }
+        .border-copper { border-color: var(--color-copper); }
+        
+        .text-forest { color: var(--color-forest); }
+        .bg-forest { background-color: var(--color-forest); }
+        
+        .bg-mud { background-color: var(--color-mud); }
+
+        /* Arched Reveal */
+        .arch-container {
+            clip-path: ellipse(150% 100% at 50% 100%);
+            transition: clip-path 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .arch-container.scrolled {
+            clip-path: ellipse(100% 100% at 50% 50%);
+        }
+
+        .window-arch {
+            clip-path: path('M0,100 C0,44.77 44.77,0 100,0 C155.23,0 200,44.77 200,100 L200,300 L0,300 Z');
+            transform-origin: bottom center;
+        }
+
+        /* Bento Grid Shadows & Hovers */
+        .bento-card {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(196, 139, 98, 0.2);
+        }
+        
+        .bento-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(139, 107, 74, 0.1);
+            border-color: rgba(196, 139, 98, 0.5);
+        }
+
+        /* Texture Overlay */
+        .plaster-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.4;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            mix-blend-mode: multiply;
+        }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #1f1f1f 0%, #c48b62 50%, #1f1f1f 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-sand);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-mud);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-copper);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-copper selection:text-white">
+
+    <div class="plaster-texture"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 px-8 py-6 z-40 flex justify-between items-center mix-blend-difference text-white pointer-events-none">
+        <div class="text-[10px] uppercase tracking-[0.3em] font-semibold pointer-events-auto">
+            Case Study 01
+        </div>
+        <a href="/" class="group flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium hover:text-copper transition-colors pointer-events-auto">
+            <span class="w-6 h-[1px] bg-white group-hover:bg-copper group-hover:w-8 transition-all"></span>
+            Return
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[110vh] flex flex-col items-center justify-center overflow-hidden">
+        
+        <div class="absolute inset-0 z-0 bg-mud/30"></div>
+        
+        <!-- Large Background Arch -->
+        <div class="absolute top-[10%] w-[90vw] md:w-[60vw] h-[120vh] left-1/2 -translate-x-1/2 arch-container bg-black z-0 overflow-hidden" id="hero-arch">
+            <img src="./thumbnail.png" alt="Siddha Clinic Interior" class="w-full h-full object-cover opacity-80 scale-110" id="hero-img" />
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 text-center mt-32 px-4 flex flex-col items-center max-w-5xl mx-auto">
+            <div class="overflow-hidden mb-6">
+                <span class="block text-[11px] uppercase tracking-[0.5em] text-sand font-bold mb-4 transform translate-y-10 opacity-0" id="hero-subtitle">
+                    Digital Ecosystem for Traditional Medicine
+                </span>
+            </div>
+            
+            <h1 class="text-6xl md:text-9xl font-serif text-sand leading-none italic mb-8 overflow-hidden drop-shadow-2xl">
+                <span class="block transform translate-y-[120%]" id="hero-title-1">Siddha</span>
+                <span class="block transform translate-y-[120%]" id="hero-title-2">Wellness</span>
+            </h1>
+
+            <div class="overflow-hidden max-w-xl mx-auto mt-8">
+                <p class="text-lg md:text-xl text-sand/80 font-light leading-relaxed transform translate-y-10 opacity-0" id="hero-desc">
+                    Bridging centuries of holistic healing with modern, seamless clinical infrastructure.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10" id="hero-scroll">
+            <span class="text-[9px] uppercase tracking-[0.3em] text-sand/60">Discover</span>
+            <div class="w-[1px] h-16 bg-sand/30 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-sand animate-[drop_2s_infinite]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="py-32 px-6 md:px-16 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-20 items-center">
+            
+            <div class="w-full md:w-5/12 text-center md:text-left">
+                <span class="text-copper text-[10px] uppercase font-bold tracking-[0.4em] mb-4 block">The Philosophy</span>
+                <h2 class="text-4xl md:text-6xl font-serif italic mb-8 leading-tight">Authentic Roots.<br/>Fluid Interface.</h2>
+                <p class="text-lg text-charcoal/70 leading-relaxed font-light mb-10">
+                    Siddha medicine relies on meticulous observation and complex herbal formulations. The digital challenge was to create an interface that feels as grounded and deliberate as the practice itself—removing sterile clinical vibes in favor of warmth and clarity.
+                </p>
+                <div class="grid grid-cols-2 gap-8 border-t border-copper/20 pt-8 text-left">
+                    <div>
+                        <span class="block text-4xl font-serif italic text-copper mb-2">300+</span>
+                        <span class="text-xs uppercase tracking-[0.1em] text-charcoal/60 font-semibold">Herbal Profiles</span>
+                    </div>
+                    <div>
+                        <span class="block text-4xl font-serif italic text-copper mb-2">0s</span>
+                        <span class="text-xs uppercase tracking-[0.1em] text-charcoal/60 font-semibold">Patient Friction</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-7/12 relative">
+                <!-- Aesthetic Composition -->
+                <div class="relative w-full aspect-[4/3] bg-mud/30 overflow-hidden p-4 rounded-[2rem]">
+                    <img src="https://images.unsplash.com/photo-1611078508493-271383020626?auto=format&fit=crop&q=80&w=1200" alt="Herbs and Mortar" class="w-full h-full object-cover rounded-[1.5rem] filter grayscale-[20%] sepia-[10%] shadow-2xl scale-image" />
+                    
+                    <!-- Floating stat card -->
+                    <div class="absolute -bottom-8 -left-8 bento-card p-6 rounded-2xl w-64 floating-element hidden md:block z-10">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-forest flex items-center justify-center text-sand font-serif italic text-xl">N</div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-charcoal">Neem Extract</span>
+                        </div>
+                        <div class="w-full bg-charcoal/10 h-1 rounded-full overflow-hidden">
+                            <div class="w-[85%] bg-copper h-full rounded-full"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-[9px] uppercase tracking-wider text-charcoal/60">
+                            <span>Purity</span>
+                            <span>Optimal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Digital Ecosystem (Cards) -->
+    <section class="py-32 bg-forest text-sand relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-overlay"></div>
+        <div class="max-w-7xl mx-auto px-6 md:px-16 relative z-10">
+            
+            <div class="text-center mb-24">
+                <span class="text-copper font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Core Modules</span>
+                <h2 class="text-5xl md:text-7xl font-serif italic mb-6">The Digital Ecosystem</h2>
+                <div class="w-16 h-[1px] bg-copper mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <!-- Card 1 -->
+                <div class="bg-[#223021] border border-[#3a4f38] p-10 lg:p-14 rounded-3xl hover:-translate-y-2 transition-transform duration-500 shadow-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-copper/10 rounded-full blur-[80px] group-hover:bg-copper/20 transition-colors duration-700"></div>
+                    <span class="text-copper text-sm font-bold tracking-widest uppercase mb-6 block border-b border-copper/20 pb-4 inline-block">01. Workflow</span>
+                    <h3 class="text-3xl font-serif italic mb-4">Practitioner Dashboard</h3>
+                    <p class="text-sand/70 leading-relaxed font-light mb-8">
+                        A unified interface for Vaidyas (physicians) to log pulse diagnostics (Nadi Pariksha), prescribe custom herbal formulations, and track long-term chronic patient recoveries without relying on disjointed paper trails.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-sand/80 font-medium">
+                            <span class="w-1.5 h-1.5 rounded-full bg-copper"></span> Interactive Diagnostic Charting
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-sand/80 font-medium">
+                            <span class="w-1.5 h-1.5 rounded-full bg-copper"></span> Patient History Timeline
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-[#223021] border border-[#3a4f38] p-10 lg:p-14 rounded-3xl mt-0 md:mt-16 hover:-translate-y-2 transition-transform duration-500 shadow-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-copper/10 rounded-full blur-[80px] group-hover:bg-copper/20 transition-colors duration-700"></div>
+                    <span class="text-copper text-sm font-bold tracking-widest uppercase mb-6 block border-b border-copper/20 pb-4 inline-block">02. Patient Portal</span>
+                    <h3 class="text-3xl font-serif italic mb-4">Care & Consultation</h3>
+                    <p class="text-sand/70 leading-relaxed font-light mb-8">
+                        Empowering patients with secure telemedicine access, detailed dietary regimens (Pathya-Apathya), and appointment scheduling, all wrapped in a calming, accessible mobile-first web app.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-sand/80 font-medium">
+                            <span class="w-1.5 h-1.5 rounded-full bg-copper"></span> Digital Diet Regimans
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-sand/80 font-medium">
+                            <span class="w-1.5 h-1.5 rounded-full bg-copper"></span> Secure Video Consultations
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Herbal Repository Bento Grid -->
+    <section class="py-32 px-6 md:px-16 max-w-7xl mx-auto">
+        <div class="mb-20">
+            <h2 class="text-4xl md:text-5xl font-serif italic text-charcoal mb-4">Materia Medica.</h2>
+            <p class="text-copper font-medium uppercase tracking-widest text-sm">Interactive Repository UI</p>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-none md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+            
+            <!-- Large Image Cell -->
+            <div class="col-span-1 md:col-span-2 row-span-1 md:row-span-2 bento-card rounded-3xl overflow-hidden relative group">
+                <img src="https://images.unsplash.com/photo-1596541223130-5d56447c2295?auto=format&fit=crop&q=80&w=800" alt="Herbs" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/20 to-transparent flex flex-col justify-end p-8">
+                    <span class="bg-copper text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full w-max mb-3">Featured</span>
+                    <h3 class="text-3xl font-serif italic text-sand mb-2">Ashwagandha</h3>
+                    <p class="text-sand/80 text-sm max-w-sm">Withania somnifera. Used extensively for stress relief and vitality building in traditional practices.</p>
+                </div>
+            </div>
+
+            <!-- UI Snippet Cell -->
+            <div class="col-span-1 md:col-span-2 row-span-1 bento-card rounded-3xl p-8 flex flex-col justify-center">
+                <div class="flex justify-between items-center mb-6">
+                    <h4 class="font-bold uppercase tracking-widest text-sm">Formulation Index</h4>
+                    <span class="text-copper">100%</span>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 border-b border-copper/10 pb-4">
+                        <div class="w-12 h-12 bg-mud/50 rounded-xl flex items-center justify-center font-serif text-copper text-lg">T</div>
+                        <div class="flex-1">
+                            <h5 class="font-bold text-sm">Triphala Churna</h5>
+                            <p class="text-xs text-charcoal/60">Digestion & Detox</p>
+                        </div>
+                        <button class="w-8 h-8 rounded-full border border-copper/30 flex items-center justify-center hover:bg-copper hover:text-white transition-colors text-copper">→</button>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-mud/50 rounded-xl flex items-center justify-center font-serif text-copper text-lg">N</div>
+                        <div class="flex-1">
+                            <h5 class="font-bold text-sm">Nilavembu Kudineer</h5>
+                            <p class="text-xs text-charcoal/60">Immunity Booster</p>
+                        </div>
+                        <button class="w-8 h-8 rounded-full border border-copper/30 flex items-center justify-center hover:bg-copper hover:text-white transition-colors text-copper">→</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typography/Color Cell -->
+            <div class="col-span-1 md:col-span-1 row-span-1 bg-mud rounded-3xl p-8 flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-charcoal/50 block mb-2">Typography</span>
+                    <p class="font-serif italic text-3xl mb-1">Playfair Display</p>
+                    <p class="font-sans text-sm font-medium">Inter Sans</p>
+                </div>
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 rounded-full bg-sand shadow-sm"></div>
+                    <div class="w-8 h-8 rounded-full bg-copper shadow-sm"></div>
+                    <div class="w-8 h-8 rounded-full bg-forest shadow-sm"></div>
+                </div>
+            </div>
+
+            <!-- Detail Cell -->
+            <div class="col-span-1 md:col-span-1 row-span-1 bento-card rounded-3xl p-8 flex items-center justify-center text-center relative overflow-hidden group">
+                <div class="absolute inset-0 bg-copper/5 group-hover:bg-copper/10 transition-colors"></div>
+                <div class="relative z-10">
+                    <span class="block text-5xl font-serif italic text-copper mb-2">99.9%</span>
+                    <span class="text-[10px] uppercase tracking-widest font-bold">Uptime Reliability</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <footer class="py-32 bg-charcoal text-center border-t-8 border-copper/20 relative">
+        <div class="max-w-2xl mx-auto px-6 relative z-10">
+            <h2 class="text-4xl md:text-6xl font-serif italic text-sand mb-8">Ready to explore more?</h2>
+            
+            <a href="/" class="inline-flex items-center justify-center px-10 py-5 bg-copper text-white uppercase text-xs tracking-[0.3em] font-bold rounded-full hover:bg-sand hover:text-charcoal transition-all duration-300 shadow-xl shadow-copper/20">
+                Back to Collection
+            </a>
+            
+            <p class="mt-16 text-xs text-sand/40 font-bold tracking-[0.2em] uppercase">
+                © 2026 Siddha Wellness. Conceptual Case Study.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Animations Setup -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Parallax & Reveal
+        const timeline = gsap.timeline();
+        
+        timeline.to("#hero-title-1", { y: "0%", duration: 1, ease: "power4.out", delay: 0.5 })
+                .to("#hero-title-2", { y: "0%", duration: 1, ease: "power4.out" }, "-=0.8")
+                .to("#hero-subtitle", { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.6")
+                .to("#hero-desc", { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.6")
+                .to("#hero-arch", { 
+                    clipPath: "ellipse(100% 100% at 50% 50%)", 
+                    width: "100%",
+                    top: "0%",
+                    height: "110vh",
+                    duration: 1.5, 
+                    ease: "power2.inOut"
+                }, "-=0.5");
+
+        // Subtle image zoom on load
+        gsap.to("#hero-img", {
+            scale: 1,
+            duration: 2,
+            ease: "power2.out"
+        });
+
+        // Parallax effect on scroll for hero
+        gsap.to("#hero-img", {
+            yPercent: 30,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "section",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Float animations
+        gsap.to(".floating-element", {
+            y: 15,
+            duration: 3,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+
+        // Image reveal
+        gsap.utils.toArray('.scale-image').forEach(img => {
+            gsap.from(img, {
+                scale: 1.2,
+                scrollTrigger: {
+                    trigger: img,
+                    start: "top 90%",
+                    end: "bottom 10%",
+                    scrub: 1
+                }
+            });
+        });
+
+        // Add custom keyframe drop animation for scroll indicator
+        const style = document.createElement('style');
+        style.innerHTML = \`
+            @keyframes drop {
+                0% { transform: translateY(-100%); opacity: 0; }
+                50% { transform: translateY(50%); opacity: 1; }
+                100% { transform: translateY(200%); opacity: 0; }
+            }
+        \`;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

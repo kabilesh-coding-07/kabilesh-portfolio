@@ -8,25 +8,307 @@
   }
 
   body {
-    @apply font-sans antialiased text-ink;
+    @apply font-sans antialiased;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  /* SYSTEM CURSOR IS MANAGED VIA THEME-SPECIFIC CLASSES ON ROOT */
+  .cursor-none * {
+    cursor: none !important;
+  }
+
+  .theme-cinephile {
     background-color: #111827;
-    /* Noir background */
-    /* Dark comic halftone dot pattern */
     background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
     background-size: 8px 8px;
-    background-position: 0 0, 4px 4px;
+    background-attachment: fixed;
+  }
+
+  .theme-elegant {
+    background-color: #fdfcf0;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(197, 160, 89, 0.03) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(232, 220, 196, 0.08) 0%, transparent 40%),
+      linear-gradient(rgba(197, 160, 89, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197, 160, 89, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
     background-attachment: fixed;
   }
 }
 
-@layer utilities {
-  .comic-stroke {
-    -webkit-text-stroke: 1.5px black;
+@layer components {
+  .glass-elegant {
+    @apply bg-white/30 backdrop-blur-md border-[0.5px] border-white/40 shadow-2xl shadow-elegant-gold/5 transition-all duration-700;
+  }
+
+  .borderless-card-wrapper {
+    @apply relative overflow-hidden transition-all duration-700;
+  }
+
+  /* ELEGANT IMAGE REVEAL (Replaces Blur) */
+  .elegant-image-reveal {
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .group:hover .elegant-image-reveal {
+    transform: scale(1.05);
+    filter: brightness(1.1) contrast(1.05);
+  }
+
+  .shimmer-gold {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-gold::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 250%; 
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 38%,
+      rgba(197, 160, 89, 0.15) 45%,
+      rgba(255, 255, 255, 0.75) 50%,
+      rgba(197, 160, 89, 0.15) 55%,
+      transparent 62%
+    );
+    transform: rotate(25deg);
+    animation: shimmer-infinite 4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.4;
+  }
+
+  .liquid-light-glide {
+    position: absolute;
+    width: 60vw;
+    height: 120vh;
+    background: radial-gradient(
+      ellipse at center, 
+      rgba(197, 160, 89, 0.25) 0%, 
+      rgba(197, 160, 89, 0.12) 40%, 
+      transparent 70%
+    );
+    filter: blur(90px); /* Reduced from 140px for crispness */
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+    will-change: transform, opacity;
+  }
+
+  .liquid-glow-core {
+    position: absolute;
+    width: 20vw;
+    height: 80vh;
+    background: radial-gradient(
+      ellipse at center, 
+      rgba(255, 255, 255, 0.5) 0%, 
+      rgba(197, 160, 89, 0.1) 60%,
+      transparent 90%
+    );
+    filter: blur(60px); /* Reduced from 100px for crispness */
+    z-index: 2;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .gold-fringe-decorative::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(234, 215, 181, 0.4), transparent);
+    mix-blend-mode: overlay;
+  }
+
+  .ruby-jewel-glow {
+    box-shadow: 0 0 30px rgba(255, 0, 60, 0.6), 0 0 60px rgba(255, 0, 60, 0.3);
+    border: 1px solid rgba(255, 0, 60, 0.8) !important;
+  }
+
+  .ruby-glow-point {
+     @apply bg-[#ff003c];
+     box-shadow: 0 0 20px #ff003c, 0 0 40px #ff003c;
+  }
+
+  /* GENZ POSH MICRO-SHIMMER */
+  .posh-shimmer-subtle {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .posh-shimmer-subtle::after {
+    content: "";
+    position: absolute;
+    inset: -100%;
+    background: linear-gradient(
+      120deg,
+      transparent 45%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 55%
+    );
+    animation: posh-glide 4s infinite linear;
+    pointer-events: none;
+  }
+
+  @keyframes posh-glide {
+    0% { transform: translateX(-100%) skewX(-15deg); }
+    75%, 100% { transform: translateX(100%) skewX(-15deg); }
+  }
+
+  /* TEXT SHIMMER (Posh & Stable) */
+  .text-shimmer-gold {
+    background: linear-gradient(
+      to right,
+      #c5a059 20%,
+      #ead7b5 40%,
+      #ffffff 50%,
+      #ead7b5 60%,
+      #c5a059 80%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 4s linear infinite;
+  }
+
+  @keyframes text-shimmer {
+    to { background-position: 200% center; }
+  }
+}
+
+  /* BRILLIANT CUT JEWEL EFFECTS */
+  .diamond-jewel {
+    aspect-ratio: 1/1;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    background: conic-gradient(
+      from 180deg at 50% 50%,
+      rgba(255, 255, 255, 0.4) 0deg,
+      rgba(197, 160, 89, 0.2) 90deg,
+      rgba(255, 255, 255, 0.5) 180deg,
+      rgba(197, 160, 89, 0.2) 270deg,
+      rgba(255, 255, 255, 0.4) 360deg
+    );
+    backdrop-filter: blur(15px) brightness(1.3) contrast(1.2);
+    border: 0.2px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gem-facet-layer {
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(50% 10%, 90% 50%, 50% 90%, 10% 50%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
+    border: 0.1px solid rgba(255,255,255,0.2);
+    pointer-events: none;
+  }
+
+  .star-sparkle {
+    position: absolute;
+    width: 2px;
+    height: 15px;
+    background: white;
+    filter: blur(1px);
+    box-shadow: 0 0 10px white, 0 0 20px white;
+    border-radius: 50%;
+  }
+
+  .star-sparkle::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
+
+  /* JEWELED POINTER (Elegant Diamond Arrow) */
+  .jeweled-pointer {
+    width: 28px;
+    height: 38px;
+    clip-path: polygon(0% 0%, 100% 70%, 55% 70%, 75% 100%, 45% 100%, 35% 70%, 0% 70%);
+    background: linear-gradient(135deg, #ffffff 0%, rgba(197, 160, 89, 0.4) 50%, #ffffff 100%);
+    backdrop-filter: blur(8px) brightness(1.2);
+    border: 0.5px solid rgba(197, 160, 89, 0.8);
+    position: relative;
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+
+  .jeweled-facet {
+    position: absolute;
+    inset: 1px;
+    background: conic-gradient(
+      from 180deg at 50% 50%,
+      rgba(255, 255, 255, 0.6) 0deg,
+      rgba(255, 255, 255, 0.1) 180deg,
+      rgba(255, 255, 255, 0.6) 360deg
+    );
+    clip-path: inherit;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .ruby-heart-pointer {
+    width: 6px;
+    height: 8px;
+    background: radial-gradient(circle at center, #ff003c, #800000);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    box-shadow: 0 0 12px #ff003c;
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    z-index: 10;
+  }
+
+  .jewel-glint {
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    background: white;
+    filter: blur(1.5px);
+    border-radius: 50%;
+    opacity: 0.9;
+    z-index: 5;
+    pointer-events: none;
+    box-shadow: 0 0 10px white, 0 0 20px white;
+  }
+
+  .ruby-jewel-glow {
+    box-shadow: 0 0 40px rgba(255, 0, 60, 0.7), 0 0 80px rgba(255, 0, 60, 0.3);
+    border: 1px solid rgba(255, 0, 60, 0.9) !important;
   }
 
   .animate-matrix {
     animation: matrixFall linear infinite;
   }
+
+@keyframes shimmer-infinite {
+  0% { left: -150%; }
+  66%, 100% { left: 150%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translate(-30%, -30%) rotate(0deg); }
+  100% { transform: translate(30%, 30%) rotate(0deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 20px rgba(197, 160, 89, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(197, 160, 89, 0.3); }
 }
 
 @keyframes matrixFall {
@@ -46,5 +328,37 @@
   100% {
     transform: translateY(800px);
     opacity: 0;
+  }
+}
+
+@layer utilities {
+  .clapper-top-stripes {
+    background: repeating-linear-gradient(
+      45deg,
+      #ffffff,
+      #ffffff 20px,
+      #000000 20px,
+      #000000 40px
+    );
+  }
+
+  .clapper-bottom-stripes {
+    background: repeating-linear-gradient(
+      -45deg,
+      #ffffff,
+      #ffffff 20px,
+      #000000 20px,
+      #000000 40px
+    );
+  }
+
+  .cinematic-vignette {
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+    pointer-events: none;
+  }
+
+  .text-stencil {
+    -webkit-text-stroke: 1px currentColor;
+    color: transparent;
   }
 }

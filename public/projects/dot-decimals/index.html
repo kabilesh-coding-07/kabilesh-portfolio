@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dot Decimals | IT Infrastructure</title>
+  <link rel="stylesheet" href="../alphery-theme.css">
+  <style>
+    :root {
+      --accent: #8b5cf6;
+      --accent-hover: #7c3aed;
+    }
+    .hero { background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1600'); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Dot Decimals</div>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#case-studies">Clients</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Scale With Confidence</h1>
+    <p>Enterprise-grade cloud infrastructure, cybersecurity, and DevOps solutions for modern companies.</p>
+    <a href="#services" class="btn">Explore Services</a>
+  </header>
+
+  <section id="services">
+    <h2>Core Capabilities</h2>
+    <div class="grid">
+      <div class="glass-panel">
+        <h3 class="mb-2 text-accent">Cloud Migration</h3>
+        <p class="text-secondary mb-2">Seamless transition to AWS, Azure, or GCP with zero downtime architectures.</p>
+      </div>
+      <div class="glass-panel">
+        <h3 class="mb-2 text-accent">Zero-Trust Security</h3>
+        <p class="text-secondary mb-2">Comprehensive threat models and identity management systems.</p>
+      </div>
+      <div class="glass-panel">
+        <h3 class="mb-2 text-accent">Managed DevOps</h3>
+        <p class="text-secondary mb-2">CI/CD pipelines, container orchestration, and automated provisioning.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Request a Consultation</h2>
+    <form class="glass-panel" onsubmit="event.preventDefault(); alert('Consultation Request Sent!');">
+      <input type="text" placeholder="Company Name" required>
+      <input type="email" placeholder="Work Email" required>
+      <select required>
+        <option value="" disabled selected>Service of Interest</option>
+        <option>Cloud Architecture</option>
+        <option>Cybersecurity Audit</option>
+        <option>DevOps Support</option>
+      </select>
+      <button type="submit" class="btn mt-4">Get Started</button>
+    </form>
+  </section>
+</body>
+</html>

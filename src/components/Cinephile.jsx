@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Clapperboard, Film, Popcorn, Ticket } from 'lucide-react';
 
-const Cinephile = () => {
+const Cinephile = ({ isCinephile }) => {
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -17,10 +17,10 @@ const Cinephile = () => {
     };
 
     const movies = [
-        { title: "Interstellar", dir: "Christopher Nolan", icon: <Film className="text-accent mb-4" size={32} /> },
-        { title: "The Matrix", dir: "The Wachowskis", icon: <Ticket className="text-accent mb-4" size={32} /> },
-        { title: "Dune", dir: "Denis Villeneuve", icon: <Popcorn className="text-accent mb-4" size={32} /> },
-        { title: "Her", dir: "Spike Jonze", icon: <Clapperboard className="text-accent mb-4" size={32} /> },
+        { title: "Interstellar", dir: "Christopher Nolan", icon: <Film className={isCinephile ? "text-accent mb-4" : "text-elegant-gold mb-4"} size={32} /> },
+        { title: "The Matrix", dir: "The Wachowskis", icon: <Ticket className={isCinephile ? "text-accent mb-4" : "text-elegant-gold mb-4"} size={32} /> },
+        { title: "Dune", dir: "Denis Villeneuve", icon: <Popcorn className={isCinephile ? "text-accent mb-4" : "text-elegant-gold mb-4"} size={32} /> },
+        { title: "Her", dir: "Spike Jonze", icon: <Clapperboard className={isCinephile ? "text-accent mb-4" : "text-elegant-gold mb-4"} size={32} /> },
     ];
 
     return (
@@ -33,16 +33,18 @@ const Cinephile = () => {
                 transition={{ duration: 0.6 }}
                 className="flex flex-col items-center mb-16 text-center"
             >
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-none border-2 border-ink bg-comic-cyan text-noir font-bold uppercase tracking-wider text-sm mb-6 shadow-comic-dark -rotate-2">
-                    <Clapperboard size={16} /> Cinephile Focus
+                <div className={`inline-flex items-center gap-2 px-4 py-2 border-2 font-bold uppercase tracking-wider text-sm mb-6 -rotate-2 ${isCinephile ? 'border-ink bg-comic-cyan text-noir shadow-comic-dark' : 'border-elegant-gold/20 bg-elegant-ivory text-elegant-gold shadow-elegant'}`}>
+                    <Clapperboard size={16} /> {isCinephile ? 'Cinephile Focus' : 'Artistic Direction'}
                 </div>
-                <h2 className="text-6xl md:text-7xl font-comic tracking-widest text-ink mb-6 comic-stroke" style={{ textShadow: '4px 4px 0px #00f0ff' }}>
-                    SIDE QUEST: <span className="text-comic-yellow">FILM CRITIC</span>
+                <h2 className={`text-6xl md:text-7xl tracking-widest mb-6 ${isCinephile ? 'font-comic text-ink comic-stroke' : 'font-serif text-elegant-dark italic'}`} style={isCinephile ? { textShadow: '4px 4px 0px #00f0ff' } : {}}>
+                    {isCinephile ? <>SIDE QUEST: <span className="text-comic-yellow">FILM CRITIC</span></> : 'A Cinematic Lens'}
                 </h2>
 
-                <p className="text-xl text-slate-300 max-w-2xl leading-relaxed font-medium">
-                    Debugging code by day, dissecting plot holes by night. I appreciate a well-structured script,
-                    whether it's written in <span className="text-comic-red font-bold">JavaScript</span> or directed by <span className="text-comic-cyan font-bold">Nolan</span>.
+                <p className={`text-xl max-w-2xl leading-relaxed font-medium ${isCinephile ? 'text-slate-300' : 'text-slate-600 font-serif lowercase italic'}`}>
+                    {isCinephile
+                        ? <>Debugging code by day, dissecting plot holes by night. I appreciate a well-structured script, whether it's written in <span className="text-comic-red font-bold">JavaScript</span> or directed by <span className="text-comic-cyan font-bold">Nolan</span>.</>
+                        : "Software architecture is the cinematography of the digital world. I seek the rhythm in every frame of code and the narrative in every user journey."
+                    }
                 </p>
             </motion.div>
 
@@ -55,19 +57,21 @@ const Cinephile = () => {
             >
                 {movies.map((movie, index) => {
                     const shadows = ['shadow-comic-hard-cyan', 'shadow-comic-hard-red', 'shadow-comic-hard-yellow', 'shadow-comic-dark'];
+                    const hoverShadow = isCinephile ? shadows[index % 4] : 'shadow-elegant';
+
                     return (
                         <motion.div
                             key={movie.title}
                             variants={itemVariants}
                             whileHover={{ y: -8, rotate: index % 2 === 0 ? 2 : -2 }}
-                            className={`bg-noir border-4 border-ink p-8 flex flex-col items-center text-center group cursor-crosshair relative overflow-hidden transition-all ${shadows[index % 4]}`}
+                            className={`border-4 p-8 flex flex-col items-center text-center group cursor-crosshair relative overflow-hidden transition-all ${isCinephile ? 'bg-noir border-ink' : 'bg-white border-elegant-gold/10'} ${hoverShadow}`}
                         >
                             {/* Film grain effect overlay */}
                             <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/stardust.png")' }}></div>
 
                             {movie.icon}
-                            <h3 className="text-3xl font-comic tracking-wider text-ink mb-2 group-hover:text-comic-cyan transition-colors">{movie.title}</h3>
-                            <p className="text-slate-400 font-bold uppercase tracking-widest text-sm">Dir. {movie.dir}</p>
+                            <h3 className={`text-3xl tracking-wider mb-2 transition-colors ${isCinephile ? 'font-comic text-ink group-hover:text-comic-cyan' : 'font-serif text-elegant-dark group-hover:text-elegant-gold'}`}>{movie.title}</h3>
+                            <p className={`font-bold uppercase tracking-widest text-sm ${isCinephile ? 'text-slate-400' : 'text-slate-500'}`}>Dir. {movie.dir}</p>
                         </motion.div>
                     );
                 })}

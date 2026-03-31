@@ -72,7 +72,7 @@ const Projects = ({ isCinephile }) => {
     ];
 
     return (
-        <section id="projects" className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+        <section id="projects" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
             {/* Section Header */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -81,17 +81,17 @@ const Projects = ({ isCinephile }) => {
                 transition={{ duration: 0.6 }}
                 className="flex flex-col items-center justify-center mb-16"
             >
-                <h2 className={`text-6xl md:text-7xl tracking-widest mb-6 ${isCinephile ? 'font-comic text-ink comic-stroke' : 'font-serif text-elegant-dark italic'}`} style={isCinephile ? { textShadow: '4px 4px 0px #00f0ff' } : {}}>
+                <h2 className={`text-3xl sm:text-5xl md:text-7xl tracking-widest mb-4 sm:mb-6 ${isCinephile ? 'font-comic text-ink comic-stroke' : 'font-serif text-elegant-dark italic'}`} style={isCinephile ? { textShadow: '4px 4px 0px #00f0ff' } : {}}>
                     {isCinephile ? 'BLOCKBUSTERS.' : 'Selected Works'}
                 </h2>
-                <div className={`flex gap-8 text-lg font-bold uppercase tracking-wider ${isCinephile ? 'text-slate-400' : 'text-slate-500 font-serif lowercase italic'}`}>
+                <div className={`flex gap-4 sm:gap-8 text-sm sm:text-lg font-bold uppercase tracking-wider ${isCinephile ? 'text-slate-400' : 'text-slate-500 font-serif lowercase italic'}`}>
                     <a href="#about" className={`transition-colors ${isCinephile ? 'hover:text-comic-yellow' : 'hover:text-elegant-gold'}`}>Origins</a>
                     <span className={isCinephile ? 'text-ink comic-stroke' : 'text-elegant-gold not-italic font-bold uppercase tracking-widest'} style={isCinephile ? { textShadow: '2px 2px 0px #ff003c' } : {}}>Features</span>
                     <a href="#stack" className={`transition-colors ${isCinephile ? 'hover:text-comic-cyan' : 'hover:text-elegant-gold'}`}>Arsenal</a>
                 </div>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-12 sm:gap-y-20">
                 <AnimatePresence mode='popLayout'>
                     {projects.slice(0, showAll ? projects.length : 3).map((project, index) => (
                         <motion.div
@@ -113,7 +113,7 @@ const Projects = ({ isCinephile }) => {
                             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                             whileHover={!isCinephile ? { y: -10, transition: { duration: 0.4 } } : "hover"}
                             animate="rest"
-                            className={`w-full transition-all duration-700 relative group p-5 md:p-6 min-h-[460px] flex flex-col justify-end ${isCinephile ? 'border-x-[1.5px] border-b-[1.5px] border-t-0 rounded-b-xl border-ink bg-noir shadow-comic-hard-yellow mt-10' : 'border-[0.5px] rounded-xl glass-elegant border-white/30 shadow-xl shadow-elegant-gold/5 overflow-hidden mt-6'}`}
+                            className={`w-full transition-all duration-700 relative group p-4 sm:p-5 md:p-6 min-h-[340px] sm:min-h-[400px] md:min-h-[460px] flex flex-col justify-end ${isCinephile ? 'border-x-[1.5px] border-b-[1.5px] border-t-0 rounded-b-xl border-ink bg-noir shadow-comic-hard-yellow mt-10' : 'border-[0.5px] rounded-xl glass-elegant border-white/30 shadow-xl shadow-elegant-gold/5 overflow-hidden mt-6'}`}
                         >
                             {/* Clapperboard Full Assembly (Cinephile Only) */}
                             {isCinephile && (
@@ -178,7 +178,7 @@ const Projects = ({ isCinephile }) => {
                                     <div className="absolute top-12 left-4 right-4 z-[45] pointer-events-none">
                                         <div className="flex flex-col gap-1">
                                             <span className="text-[8px] font-comic text-comic-yellow tracking-[0.4em] uppercase">CASE_STUDY_0{index + 1}</span>
-                                            <h3 className="text-3xl md:text-4xl font-comic text-white drop-shadow-[3px_3px_0px_#000] tracking-tight">{project.title}</h3>
+                                            <h3 className="text-2xl sm:text-3xl md:text-4xl font-comic text-white drop-shadow-[3px_3px_0px_#000] tracking-tight">{project.title}</h3>
                                             <div className="mt-1 inline-flex items-center gap-1.5 px-2 py-0.5 bg-comic-cyan text-noir font-comic text-[9px] rounded border-[1.5px] border-ink w-fit">
                                                 <div className="w-1 h-1 rounded-full bg-ink animate-pulse" />
                                                 {project.badge}
@@ -192,7 +192,7 @@ const Projects = ({ isCinephile }) => {
                             {!isCinephile && (
                                 <div className="absolute top-5 left-5 z-[45] pointer-events-none">
                                     <span className="text-[9px] font-black text-elegant-gold/80 tracking-[0.3em] uppercase mb-1.5 block border-b border-elegant-gold/20 w-fit">SELECTED_COLLECTION_0{index + 1}</span>
-                                    <h3 className="text-2xl md:text-3xl font-serif text-white italic drop-shadow-md tracking-tighter">{project.title}</h3>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-white italic drop-shadow-md tracking-tighter">{project.title}</h3>
                                 </div>
                             )}
 

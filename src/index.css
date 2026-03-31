@@ -13,8 +13,10 @@
   }
 
   /* SYSTEM CURSOR IS MANAGED VIA THEME-SPECIFIC CLASSES ON ROOT */
-  .cursor-none * {
-    cursor: none !important;
+  @media (min-width: 768px) {
+    .cursor-none * {
+      cursor: none !important;
+    }
   }
 
   .theme-cinephile {

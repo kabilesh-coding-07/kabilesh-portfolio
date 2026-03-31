@@ -34,13 +34,13 @@ const TechStack = ({ isCinephile }) => {
     };
 
     return (
-        <section id="stack" className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+        <section id="stack" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
             <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className={`text-6xl md:text-8xl tracking-widest mb-24 text-center ${isCinephile ? 'font-comic text-ink comic-stroke' : 'font-serif text-elegant-dark italic text-shimmer-gold'}`}
+                className={`text-3xl sm:text-5xl md:text-6xl lg:text-8xl tracking-widest mb-12 sm:mb-24 text-center ${isCinephile ? 'font-comic text-ink comic-stroke' : 'font-serif text-elegant-dark italic text-shimmer-gold'}`}
                 style={isCinephile ? { textShadow: '4px 4px 0px #ffde00' } : {}}
             >
                 {isCinephile ? 'THE ARSENAL' : 'Technical Proficiency'}
@@ -51,13 +51,13 @@ const TechStack = ({ isCinephile }) => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                className="grid md:grid-cols-3 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8"
             >
                 {categories.map((category, index) => (
                     <motion.div
                         variants={itemVariants}
                         key={category.title}
-                        className={`p-10 flex flex-col items-center text-center transition-all duration-500 rounded-3xl group ${isCinephile 
+                        className={`p-6 sm:p-10 flex flex-col items-center text-center transition-all duration-500 rounded-2xl sm:rounded-3xl group ${isCinephile 
                             ? 'bg-noir border-4 border-ink shadow-comic-hard-cyan hover:-translate-y-2' 
                             : 'glass-elegant shimmer-gold border-white/40 shadow-2xl hover:-translate-y-3 hover:shadow-elegant-gold/20'}`}
                     >
@@ -70,7 +70,7 @@ const TechStack = ({ isCinephile }) => {
                         >
                             {category.icon}
                         </motion.div>
-                        <h3 className={`text-3xl tracking-widest mb-8 ${isCinephile ? 'font-comic text-ink' : 'font-serif text-elegant-dark italic'}`}>
+                        <h3 className={`text-xl sm:text-2xl md:text-3xl tracking-widest mb-6 sm:mb-8 ${isCinephile ? 'font-comic text-ink' : 'font-serif text-elegant-dark italic'}`}>
                             {category.title}
                         </h3>
                         <div className="flex flex-wrap justify-center gap-3">

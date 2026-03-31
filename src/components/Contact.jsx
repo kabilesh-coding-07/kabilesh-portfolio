@@ -23,10 +23,10 @@ const Contact = ({ isCinephile }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className={`text-5xl md:text-7xl tracking-widest mb-6 ${isCinephile ? 'font-comic text-ink comic-stroke text-6xl md:text-8xl' : 'font-serif text-elegant-dark italic'}`} style={isCinephile ? { textShadow: '4px 4px 0px #ff003c' } : {}}>
+                className={`text-3xl sm:text-5xl md:text-7xl tracking-widest mb-4 sm:mb-6 ${isCinephile ? 'font-comic text-ink comic-stroke sm:text-4xl md:text-6xl lg:text-8xl' : 'font-serif text-elegant-dark italic'}`} style={isCinephile ? { textShadow: '4px 4px 0px #ff003c' } : {}}>
                 {isCinephile ? 'DIRECT ACTION.' : 'A Shared Vision.'}
             </motion.h2>
-            <p className={`text-xl font-bold uppercase tracking-wide mb-8 max-w-2xl mx-auto ${isCinephile ? 'text-slate-400' : 'text-slate-500 font-serif lowercase italic'}`}>
+            <p className={`text-base sm:text-lg md:text-xl font-bold uppercase tracking-wide mb-6 sm:mb-8 max-w-2xl mx-auto ${isCinephile ? 'text-slate-400' : 'text-slate-500 font-serif lowercase italic'}`}>
                 {isCinephile
                     ? "Got a sequel in mind, or just want to collaborate? The studio is always open for pitches."
                     : "I am always open to discussing new projects, creative ideas or opportunities to be part of your vision."
@@ -37,7 +37,7 @@ const Contact = ({ isCinephile }) => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className={`transition-all duration-700 p-8 md:p-12 border-2 text-left relative overflow-hidden group/container rounded-[3rem] ${isCinephile 
+                className={`transition-all duration-700 p-6 sm:p-8 md:p-12 border-2 text-left relative overflow-hidden group/container rounded-2xl sm:rounded-[3rem] ${isCinephile 
                     ? 'bg-noir border-ink shadow-comic-hard-cyan' 
                     : 'glass-elegant shimmer-gold border-white/40 shadow-elegant'}`}
             >
@@ -77,14 +77,14 @@ const Contact = ({ isCinephile }) => {
                         <motion.a 
                             whileHover={{ scale: 1.05, x: 10 }}
                             href="mailto:kabileshcoding07@gmail.com" 
-                            className={`flex items-center gap-6 transition-all duration-300 ${isCinephile ? 'text-slate-300 hover:text-comic-yellow text-xl' : 'text-elegant-dark hover:text-elegant-gold italic font-serif text-2xl md:text-4xl tracking-tighter'}`}
+                            className={`flex items-center gap-3 sm:gap-6 transition-all duration-300 break-all sm:break-normal ${isCinephile ? 'text-slate-300 hover:text-comic-yellow text-base sm:text-xl' : 'text-elegant-dark hover:text-elegant-gold italic font-serif text-lg sm:text-2xl md:text-4xl tracking-tighter'}`}
                         >
                             {!isCinephile && <Mail size={32} className="text-elegant-gold/40" />}
                             {isCinephile && <Mail size={28} className="text-comic-red" />}
                             kabileshcoding07@gmail.com
                         </motion.a>
                         
-                        <div className="flex flex-wrap items-center justify-center gap-12">
+                        <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6 sm:gap-12">
                             <motion.a 
                                 whileHover={{ scale: 1.1 }}
                                 href="https://github.com/kabilesh-coding-07" 

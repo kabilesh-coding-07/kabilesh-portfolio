@@ -40,19 +40,19 @@ const Navbar = ({ isCinephile, toggleTheme }) => {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
-            className="fixed top-6 left-0 w-full z-50 px-4 md:px-0 flex justify-center items-center gap-3 pointer-events-none"
+            className="fixed top-3 sm:top-6 left-0 w-full z-50 px-2 sm:px-4 md:px-0 flex justify-center items-center gap-2 sm:gap-3 pointer-events-none"
         >
             {/* The Main Navbar Container (Central Elite Command) */}
-            <nav className={`transition-all duration-300 px-4 py-3 flex items-center justify-between w-full max-w-2xl pointer-events-auto border-2 ${isCinephile 
+            <nav className={`transition-all duration-300 px-2 sm:px-4 py-2 sm:py-3 flex items-center justify-between w-full max-w-2xl pointer-events-auto border-2 ${isCinephile 
                 ? 'bg-noir border-ink shadow-comic-hard-yellow' 
                 : 'glass-elegant shimmer-gold border-elegant-gold/30 rounded-full'}`}>
                 {/* Initials Logo */}
                 <motion.a 
                     whileHover={!isCinephile ? { scale: 1.1, rotate: 5 } : {}}
                     href="#" 
-                    className={`w-14 h-14 ml-2 flex items-center justify-center transition-all duration-300 ${isCinephile 
-                        ? 'font-comic text-3xl -rotate-3 hover:rotate-3 shadow-comic-dark bg-comic-cyan text-noir border-4 border-ink shadow-[4px_4px_0px_#000]' 
-                        : 'font-serif text-2xl bg-gradient-to-br from-elegant-gold to-[#ead7b5] text-white rounded-full shadow-lg shadow-elegant-gold/20'}`}
+                    className={`w-10 h-10 sm:w-14 sm:h-14 ml-1 sm:ml-2 flex items-center justify-center transition-all duration-300 ${isCinephile 
+                        ? 'font-comic text-2xl sm:text-3xl -rotate-3 hover:rotate-3 shadow-comic-dark bg-comic-cyan text-noir border-4 border-ink shadow-[4px_4px_0px_#000]' 
+                        : 'font-serif text-lg sm:text-2xl bg-gradient-to-br from-elegant-gold to-[#ead7b5] text-white rounded-full shadow-lg shadow-elegant-gold/20'}`}
                 >
                     KM
                 </motion.a>

@@ -174,7 +174,7 @@ const PrototypeLoader = ({ onComplete }) => {
         className="text-center"
       >
         <span className="text-elegant-gold/40 font-black tracking-[1em] uppercase text-[10px] mb-4 block">Initialization</span>
-        <h1 className="text-6xl md:text-8xl font-serif text-white italic tracking-tighter mb-8 transition-all">
+        <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif text-white italic tracking-tighter mb-8 transition-all">
             KM.<span className="text-elegant-gold">01</span>
         </h1>
         <div className="w-64 h-px bg-white/10 relative overflow-hidden">
@@ -232,7 +232,7 @@ function App() {
   }, [isCinephile]);
 
   return (
-    <div className={`min-h-screen cursor-none transition-colors duration-500 ${isCinephile ? 'text-ink selection:bg-comic-cyan selection:text-noir bg-noir' : 'text-elegant-dark selection:bg-elegant-gold selection:text-white bg-transparent relative z-10'}`}>
+    <div className={`min-h-screen md:cursor-none transition-colors duration-500 ${isCinephile ? 'text-ink selection:bg-comic-cyan selection:text-noir bg-noir' : 'text-elegant-dark selection:bg-elegant-gold selection:text-white bg-transparent relative z-10'}`}>
       <AnimatePresence>
         {loading && <PrototypeLoader onComplete={handleLoaderComplete} />}
       </AnimatePresence>
@@ -256,9 +256,9 @@ function App() {
         </motion.div>
       </main>
 
-      <footer className={`py-12 text-center transition-colors duration-500 ${isCinephile ? 'text-slate-500 border-t border-slate-200/50 bg-white/5' : 'text-slate-400 border-t border-elegant-gold/20 bg-elegant-ivory'}`}>
-        <p className="font-bold tracking-widest uppercase text-sm">© {new Date().getFullYear()} Kabilesh Manokaran. All rights reserved.</p>
-        <p className={`text-xs mt-2 uppercase tracking-tighter ${isCinephile ? 'text-comic-cyan' : 'text-elegant-gold'}`}>Built with React & Tailwind CSS</p>
+      <footer className={`py-8 sm:py-12 text-center transition-colors duration-500 px-4 ${isCinephile ? 'text-slate-500 border-t border-slate-200/50 bg-white/5' : 'text-slate-400 border-t border-elegant-gold/20 bg-elegant-ivory'}`}>
+        <p className="font-bold tracking-widest uppercase text-xs sm:text-sm">© {new Date().getFullYear()} Kabilesh Manokaran. All rights reserved.</p>
+        <p className={`text-[10px] sm:text-xs mt-2 uppercase tracking-tighter ${isCinephile ? 'text-comic-cyan' : 'text-elegant-gold'}`}>Built with React & Tailwind CSS</p>
       </footer>
     </div>
   );

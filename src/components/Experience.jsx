@@ -51,18 +51,18 @@ const Experience = ({ isCinephile }) => {
 
     if (!isCinephile) {
         return (
-            <section id="experience" className="py-24 px-6 md:px-12 max-w-5xl mx-auto">
+            <section id="experience" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 max-w-5xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="mb-20 text-center"
                 >
-                    <h2 className="text-6xl font-serif text-elegant-dark italic mb-4">Professional Chronicle</h2>
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif text-elegant-dark italic mb-4">Professional Chronicle</h2>
                     <p className="text-elegant-gold tracking-[0.2em] uppercase text-sm font-bold">A journey through development and design</p>
                 </motion.div>
 
-                <div className="space-y-20 relative before:absolute before:left-[17px] md:before:left-1/2 before:top-0 before:bottom-0 before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-elegant-gold/40 before:to-transparent before:animate-pulse">
+                <div className="space-y-12 sm:space-y-20 relative before:absolute before:left-[17px] md:before:left-1/2 before:top-0 before:bottom-0 before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-elegant-gold/40 before:to-transparent before:animate-pulse">
                     {experiences.map((exp, i) => (
                         <motion.div
                             key={exp.id}
@@ -70,7 +70,7 @@ const Experience = ({ isCinephile }) => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.8, delay: i * 0.1, ease: [0.215, 0.61, 0.355, 1] }}
-                            className={`relative flex flex-col md:flex-row items-center gap-12 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+                            className={`relative flex flex-col md:flex-row items-start md:items-center gap-6 sm:gap-12 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
                         >
                             {/* Floating Marker */}
                             <motion.div 
@@ -81,14 +81,14 @@ const Experience = ({ isCinephile }) => {
 
                             <motion.div 
                                 whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-                                className={`flex-1 w-full glass-elegant shimmer-gold p-10 rounded-3xl transition-all duration-500 hover:shadow-2xl hover:shadow-elegant-gold/10 ${i % 2 === 0 ? 'text-right' : 'text-left'}`}
+                                className={`flex-1 w-full glass-elegant shimmer-gold p-6 sm:p-10 rounded-2xl sm:rounded-3xl ml-8 md:ml-0 transition-all duration-500 hover:shadow-2xl hover:shadow-elegant-gold/10 ${i % 2 === 0 ? 'md:text-right' : 'text-left'}`}
                             >
                                 <motion.span 
                                     className="text-elegant-gold font-black tracking-[0.3em] text-[10px] uppercase mb-4 block"
                                 >
                                     {exp.period}
                                 </motion.span>
-                                <h3 className="text-4xl font-serif text-elegant-dark italic mb-2 tracking-tight">{exp.title}</h3>
+                                <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-elegant-dark italic mb-2 tracking-tight">{exp.title}</h3>
                                 <p className="text-elegant-gold/60 text-xs font-black uppercase tracking-[0.4em] mb-6">{exp.location}</p>
                                 <div className="h-px w-20 bg-elegant-gold/10 mb-6 inline-block" />
                                 <p className="text-slate-600 leading-relaxed font-serif italic text-lg">"{exp.dialogue}"</p>
@@ -127,10 +127,10 @@ const Experience = ({ isCinephile }) => {
                 transition={{ duration: 0.6 }}
                 className="flex flex-col items-center justify-center mb-16 px-6"
             >
-                <h2 className="text-6xl md:text-7xl font-comic tracking-widest text-ink text-center comic-stroke" style={{ textShadow: '4px 4px 0px #00f0ff' }}>
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-comic tracking-widest text-ink text-center comic-stroke" style={{ textShadow: '4px 4px 0px #00f0ff' }}>
                     THE ORIGIN STORY
                 </h2>
-                <p className="mt-4 font-comic text-xl text-comic-yellow animate-pulse tracking-widest">
+                <p className="mt-4 font-comic text-base sm:text-xl text-comic-yellow animate-pulse tracking-widest">
                     {"< MOVE CURSOR TO EXPLORE >"}
                 </p>
             </motion.div>
@@ -140,14 +140,14 @@ const Experience = ({ isCinephile }) => {
                     ref={scrollRef}
                     className="flex gap-8 md:gap-12 w-max pl-4 items-center transition-transform duration-300 ease-out"
                 >
-                    <div className="w-[85vw] md:w-[400px] snap-center flex-shrink-0 flex items-center justify-center relative border-4 border-ink bg-comic-yellow shadow-comic-hard-cyan overflow-hidden group py-24 md:py-32">
+                    <div className="w-[85vw] md:w-[400px] snap-center flex-shrink-0 flex items-center justify-center relative border-4 border-ink bg-comic-yellow shadow-comic-hard-cyan overflow-hidden group py-16 sm:py-24 md:py-32">
                         <div className="absolute inset-0 bg-[repeating-conic-gradient(#ff003c_0_15deg,transparent_15deg_30deg)] opacity-20 group-hover:rotate-12 transition-transform duration-700"></div>
 
                         <div className="relative z-10 flex flex-col items-center justify-center transform -rotate-12 group-hover:scale-110 transition-transform duration-300">
                             <span className="font-bold uppercase tracking-widest text-lg text-ink comic-stroke px-4 py-1 bg-white border-4 border-ink mb-4 transform rotate-6">
                                 VOL. 1
                             </span>
-                            <h3 className="text-6xl md:text-8xl font-comic tracking-tighter text-white text-center comic-stroke leading-none" style={{ textShadow: '6px 6px 0px #00f0ff, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 2px 2px 0px #000' }}>
+                            <h3 className="text-4xl sm:text-6xl md:text-8xl font-comic tracking-tighter text-white text-center comic-stroke leading-none" style={{ textShadow: '6px 6px 0px #00f0ff, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 2px 2px 0px #000' }}>
                                 THE<br />BEGINNING
                             </h3>
                         </div>
@@ -156,7 +156,7 @@ const Experience = ({ isCinephile }) => {
                     </div>
 
                     {experiences.map((exp, i) => (
-                        <div key={exp.id} className={`w-[85vw] md:w-[600px] flex-shrink-0 flex flex-col md:flex-row relative group`}>
+                        <div key={exp.id} className={`w-[85vw] md:w-[600px] flex-shrink-0 flex flex-col relative group`}>
                             <div className={`flex-1 border-4 ${exp.bgColor === 'bg-ink' ? 'border-noir bg-ink' : 'border-ink bg-noir'} shadow-comic-hard-yellow flex flex-col justify-between overflow-hidden group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-300 relative`}>
 
                                 <div className={`border-b-4 ${exp.bgColor === 'bg-ink' ? 'border-noir bg-comic-yellow' : 'border-ink bg-comic-red'} p-3 flex justify-between items-center`}>
@@ -169,7 +169,7 @@ const Experience = ({ isCinephile }) => {
                                 </div>
 
                                 <div className="p-8 md:p-12 flex-1 flex flex-col justify-center relative z-10">
-                                    <h3 className={`text-4xl md:text-6xl font-comic tracking-wider mb-6 leading-none ${exp.bgColor === 'bg-ink' ? 'text-noir' : 'text-ink'}`}>
+                                    <h3 className={`text-2xl sm:text-4xl md:text-6xl font-comic tracking-wider mb-4 sm:mb-6 leading-none ${exp.bgColor === 'bg-ink' ? 'text-noir' : 'text-ink'}`}>
                                         {exp.title}
                                     </h3>
 
@@ -192,7 +192,7 @@ const Experience = ({ isCinephile }) => {
                         </div>
                     ))}
 
-                    <div className="w-[40vw] md:w-[300px] flex-shrink-0 relative border-4 border-ink bg-noir flex items-center justify-center opacity-50 border-dashed py-24 md:py-32">
+                    <div className="w-[40vw] md:w-[300px] flex-shrink-0 relative border-4 border-ink bg-noir flex items-center justify-center opacity-50 border-dashed py-16 sm:py-24 md:py-32">
                         <span className="font-comic text-3xl text-ink tracking-widest animate-pulse text-center">TO BE<br />CONTINUED...</span>
                     </div>
                 </div>

@@ -99,17 +99,17 @@ const MagneticCursor = ({ mouseX, mouseY, isCinephile }) => {
         style={{ x: cursorXSpring, y: cursorYSpring, willChange: 'transform' }}
         className="fixed top-0 left-0 pointer-events-none z-[9998] hidden md:block"
       >
-        {/* AMBIENT RADIAL FOCUS (Cyan) - Now trails slightly behind */}
+        {/* AMBIENT RADIAL FOCUS (Cyan) - Now trails slightly behind without GPU-heavy blur */}
         {isCinephile && (
             <motion.div 
                animate={{ 
                   scale: hovered ? 1.8 : 1.2, 
                   opacity: hovered ? 0.2 : 0.05 
                }}
-               className="absolute w-24 h-24 rounded-full bg-comic-cyan/20 blur-2xl -z-10"
+               className="absolute w-24 h-24 rounded-full -z-10"
                style={{
                   translateX: '-50%', translateY: '-50%', top: 0, left: 0,
-                  background: 'radial-gradient(circle, rgba(0,240,255,0.4) 0%, transparent 70%)'
+                  background: 'radial-gradient(circle, rgba(0,240,255,0.4) 0%, rgba(0,240,255,0) 70%)'
                }}
             />
         )}
@@ -152,13 +152,13 @@ const MagneticCursor = ({ mouseX, mouseY, isCinephile }) => {
               position: 'absolute', top: 0, left: 0,
               background: isCinephile 
                   ? (hovered 
-                      ? 'radial-gradient(circle, rgba(0,240,255,0.4) 0%, transparent 70%)' 
-                      : 'radial-gradient(circle, rgba(0,240,255,0.1) 0%, transparent 70%)')
+                      ? 'radial-gradient(circle, rgba(0,240,255,0.4) 0%, rgba(0,240,255,0) 70%)' 
+                      : 'radial-gradient(circle, rgba(0,240,255,0.1) 0%, rgba(0,240,255,0) 70%)')
                   : (hovered 
-                      ? 'radial-gradient(circle, rgba(255,0,60,0.2) 0%, transparent 70%)' 
-                      : 'radial-gradient(circle, rgba(197,160,89,0.1) 0%, transparent 70%)'),
+                      ? 'radial-gradient(circle, rgba(255,0,60,0.2) 0%, rgba(255,0,60,0) 70%)' 
+                      : 'radial-gradient(circle, rgba(197,160,89,0.1) 0%, rgba(197,160,89,0) 70%)'),
           }}
-          className={`${isCinephile ? 'w-48 h-48' : 'w-32 h-32'} rounded-full blur-2xl`}
+          className={`${isCinephile ? 'w-48 h-48' : 'w-32 h-32'} rounded-full`}
         />
       </motion.div>
     </>

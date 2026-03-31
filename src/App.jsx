@@ -12,8 +12,8 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motio
 const MagneticCursor = ({ mouseX, mouseY, isCinephile }) => {
   const [hovered, setHovered] = useState(false);
   
-  // PROFESSIONAL SPRING CONFIG: High stiffness for response, high damping for zero rebound
-  const springConfig = { damping: 50, stiffness: 400, restDelta: 0.001 };
+  // ULTRA-FAST SPRING for zero perceived lag while maintaining mathematical smoothness
+  const springConfig = { damping: 40, stiffness: 1500, mass: 0.1, restDelta: 0.001 };
   const cursorXSpring = useSpring(mouseX, springConfig);
   const cursorYSpring = useSpring(mouseY, springConfig);
 
@@ -28,140 +28,126 @@ const MagneticCursor = ({ mouseX, mouseY, isCinephile }) => {
   }, []);
 
   return (
-    <>
-      {/* 1:1 Hardware Tracked Main Cursor (Zero Lag) */}
-      <motion.div 
-        style={{ x: mouseX, y: mouseY, willChange: 'transform' }}
-        className="fixed top-0 left-0 pointer-events-none z-[10000] hidden md:block"
-      >
-        {isCinephile ? (
-          /* PRECISION VIEWFINDER CURSOR */
-          <motion.div
-             animate={{
-               scale: hovered ? 1.05 : 1,
-             }}
-             transition={{ type: "spring", stiffness: 400, damping: 60 }}
-             className="relative flex items-center justify-center pointer-events-none"
-             style={{ translateX: '-50%', translateY: '-50%' }}
-          >
-            {/* CORNER BRACKETS (Hairline Thin) */}
-            <motion.div 
-              animate={{ 
-                  width: hovered ? '20px' : '32px', 
-                  height: hovered ? '20px' : '32px' 
-              }}
-              transition={{ type: "spring", stiffness: 400, damping: 45 }}
-              className="absolute flex items-center justify-center"
-            >
-               <div className="absolute top-0 left-0 w-2 h-2 border-t-[0.5px] border-l-[0.5px] border-white/60" />
-               <div className="absolute top-0 right-0 w-2 h-2 border-t-[0.5px] border-r-[0.5px] border-white/60" />
-               <div className="absolute bottom-0 left-0 w-2 h-2 border-b-[0.5px] border-l-[0.5px] border-white/60" />
-               <div className="absolute bottom-0 right-0 w-2 h-2 border-b-[0.5px] border-r-[0.5px] border-white/60" />
-            </motion.div>
-
-            {/* CENTRAL PRECISION DOT */}
-            <motion.div 
-              animate={{ 
-                 backgroundColor: hovered ? '#00f0ff' : '#ffffff',
-                 boxShadow: hovered ? '0 0 8px #00f0ff' : '0 0 4px #ffffff'
-              }}
-              className="w-1 h-1 bg-white rounded-full z-10" 
-            />
-          </motion.div>
-        ) : (
-          /* ELEGANT JEWELED POINTER */
-          <motion.div
-            animate={{
-              scale: hovered ? 1.2 : 1,
-              rotate: hovered ? -5 : 0,
+    <motion.div 
+      style={{ x: cursorXSpring, y: cursorYSpring, willChange: 'transform' }}
+      className="fixed top-0 left-0 pointer-events-none z-[10000] hidden md:block"
+    >
+      {isCinephile ? (
+        /* PRECISION VIEWFINDER CURSOR */
+        <motion.div
+           animate={{
+             scale: hovered ? 1.05 : 1,
+           }}
+           transition={{ type: "spring", stiffness: 400, damping: 60 }}
+           className="absolute flex items-center justify-center pointer-events-none top-0 left-0"
+           style={{ translateX: '-50%', translateY: '-50%' }}
+        >
+          {/* CORNER BRACKETS (Hairline Thin) */}
+          <motion.div 
+            animate={{ 
+                width: hovered ? '20px' : '32px', 
+                height: hovered ? '20px' : '32px' 
             }}
-            transition={{ type: "spring", stiffness: 400, damping: 50 }}
-            className="jeweled-pointer"
-            style={{ translateX: '-50%', translateY: '-50%' }}
+            transition={{ type: "spring", stiffness: 400, damping: 45 }}
+            className="absolute flex items-center justify-center"
           >
-            <div className="jeweled-facet" />
-            
-            {/* THE RUBY HEART */}
-            <div className="ruby-heart-pointer" />
-    
-            {/* TIP GLINT */}
-            <motion.div 
-               animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
-               transition={{ duration: 1.5, repeat: Infinity }}
-               className="absolute top-0 left-0 w-2 h-2 bg-white blur-[1px] rounded-full z-20"
-            />
+             <div className="absolute top-0 left-0 w-2 h-2 border-t-[0.5px] border-l-[0.5px] border-white/60" />
+             <div className="absolute top-0 right-0 w-2 h-2 border-t-[0.5px] border-r-[0.5px] border-white/60" />
+             <div className="absolute bottom-0 left-0 w-2 h-2 border-b-[0.5px] border-l-[0.5px] border-white/60" />
+             <div className="absolute bottom-0 right-0 w-2 h-2 border-b-[0.5px] border-r-[0.5px] border-white/60" />
           </motion.div>
-        )}
-      </motion.div>
 
-      {/* Spring Tracked Trail/Ambient Glow (Smooth Lag) */}
-      <motion.div 
-        style={{ x: cursorXSpring, y: cursorYSpring, willChange: 'transform' }}
-        className="fixed top-0 left-0 pointer-events-none z-[9998] hidden md:block"
-      >
-        {/* AMBIENT RADIAL FOCUS (Cyan) - Now trails slightly behind without GPU-heavy blur */}
-        {isCinephile && (
-            <motion.div 
-               animate={{ 
-                  scale: hovered ? 1.8 : 1.2, 
-                  opacity: hovered ? 0.2 : 0.05 
-               }}
-               className="absolute w-24 h-24 rounded-full -z-10"
-               style={{
-                  translateX: '-50%', translateY: '-50%', top: 0, left: 0,
-                  background: 'radial-gradient(circle, rgba(0,240,255,0.4) 0%, rgba(0,240,255,0) 70%)'
-               }}
-            />
-        )}
-
-        {/* DANCING STAR SPARKLES (Only for Elegant) */}
-        {!isCinephile && [...Array(3)].map((_, i) => (
-          <motion.div
-              key={i}
-              className="star-sparkle"
-              animate={{
-                 x: [0, 15, -15, 0],
-                 y: [0, -20, -10, 0],
-                 scale: [0, 1, 0],
-                 rotate: [0, 180, 360],
-                 opacity: [0, 1, 0]
-              }}
-              transition={{
-                  duration: 2.5 + i,
-                  repeat: Infinity,
-                  delay: i * 0.4,
-              }}
-              style={{ 
-                  position: 'absolute', 
-                  top: 0, 
-                  left: 0,
-                  translateX: '-50%', 
-                  translateY: '-50%'
-              }}
+          {/* CENTRAL PRECISION DOT */}
+          <motion.div 
+            animate={{ 
+               backgroundColor: hovered ? '#00f0ff' : '#ffffff',
+               boxShadow: hovered ? '0 0 8px #00f0ff' : '0 0 4px #ffffff'
+            }}
+            className="w-1 h-1 bg-white rounded-full z-10" 
           />
-        ))}
-
-        {/* AMBIENT GLOW */}
+          
+          {/* AMBIENT RADIAL FOCUS (Cyan) */}
+          <motion.div 
+             animate={{ 
+                scale: hovered ? 1.8 : 1.2, 
+                opacity: hovered ? 0.2 : 0.05 
+             }}
+             className="absolute w-24 h-24 rounded-full bg-comic-cyan/20 blur-2xl -z-10"
+             style={{
+                background: 'radial-gradient(circle, rgba(0,240,255,0.4) 0%, transparent 70%)'
+             }}
+          />
+        </motion.div>
+      ) : (
+        /* ELEGANT JEWELED POINTER */
         <motion.div
           animate={{
-            scale: hovered ? 3 : (isCinephile ? 1.5 : 2),
-            opacity: hovered ? 0.35 : 0.15,
+            scale: hovered ? 1.2 : 1,
+            rotate: hovered ? -5 : 0,
           }}
-          style={{ 
-              translateX: '-50%', translateY: '-50%', 
-              position: 'absolute', top: 0, left: 0,
-              background: isCinephile 
-                  ? (hovered 
-                      ? 'radial-gradient(circle, rgba(0,240,255,0.4) 0%, rgba(0,240,255,0) 70%)' 
-                      : 'radial-gradient(circle, rgba(0,240,255,0.1) 0%, rgba(0,240,255,0) 70%)')
-                  : (hovered 
-                      ? 'radial-gradient(circle, rgba(255,0,60,0.2) 0%, rgba(255,0,60,0) 70%)' 
-                      : 'radial-gradient(circle, rgba(197,160,89,0.1) 0%, rgba(197,160,89,0) 70%)'),
-          }}
-          className={`${isCinephile ? 'w-48 h-48' : 'w-32 h-32'} rounded-full`}
+          transition={{ type: "spring", stiffness: 400, damping: 50 }}
+          className="jeweled-pointer absolute top-0 left-0"
+          style={{ translateX: '-50%', translateY: '-50%' }}
+        >
+          <div className="jeweled-facet" />
+          <div className="ruby-heart-pointer" />
+  
+          {/* TIP GLINT */}
+          <motion.div 
+             animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
+             transition={{ duration: 1.5, repeat: Infinity }}
+             className="absolute top-0 left-0 w-2 h-2 bg-white blur-[1px] rounded-full z-20"
+          />
+        </motion.div>
+      )}
+
+      {/* DANCING STAR SPARKLES (Only for Elegant) */}
+      {!isCinephile && [...Array(3)].map((_, i) => (
+        <motion.div
+            key={i}
+            className="star-sparkle"
+            animate={{
+               x: [0, 15, -15, 0],
+               y: [0, -20, -10, 0],
+               scale: [0, 1, 0],
+               rotate: [0, 180, 360],
+               opacity: [0, 1, 0]
+            }}
+            transition={{
+                duration: 2.5 + i,
+                repeat: Infinity,
+                delay: i * 0.4,
+            }}
+            style={{ 
+                position: 'absolute', 
+                top: 0, 
+                left: 0,
+                translateX: '-50%', 
+                translateY: '-50%'
+            }}
         />
-      </motion.div>
-    </>
+      ))}
+
+      {/* AMBIENT GLOW */}
+      <motion.div
+        animate={{
+          scale: hovered ? 3 : (isCinephile ? 1.5 : 2),
+          opacity: hovered ? 0.35 : 0.15,
+        }}
+        style={{ 
+            translateX: '-50%', translateY: '-50%', 
+            position: 'absolute', top: 0, left: 0,
+            background: isCinephile 
+                ? (hovered 
+                    ? 'radial-gradient(circle, rgba(0,240,255,0.4) 0%, transparent 70%)' 
+                    : 'radial-gradient(circle, rgba(0,240,255,0.1) 0%, transparent 70%)')
+                : (hovered 
+                    ? 'radial-gradient(circle, rgba(255,0,60,0.2) 0%, transparent 70%)' 
+                    : 'radial-gradient(circle, rgba(197,160,89,0.1) 0%, transparent 70%)'),
+        }}
+        className={`${isCinephile ? 'w-48 h-48' : 'w-32 h-32'} rounded-full blur-2xl`}
+      />
+    </motion.div>
   );
 };
 

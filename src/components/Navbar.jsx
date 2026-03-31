@@ -262,7 +262,7 @@ const Navbar = ({ isCinephile, toggleTheme }) => {
             {/* Mobile Nav Overlay */}
             <div
                 className={`md:hidden absolute top-24 left-4 right-4 transition-all duration-300 origin-top overflow-hidden pointer-events-auto border-4 ${isCinephile 
-                    ? 'bg-noir border-ink shadow-comic-hard-cyan opacity-100 scale-y-100' 
+                    ? 'bg-noir border-ink shadow-comic-hard-cyan' 
                     : 'bg-elegant-ivory border-elegant-gold shadow-elegant'
                 } ${isMobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}`}
             >

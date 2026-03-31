@@ -36,7 +36,7 @@ const Experience = ({ isCinephile }) => {
     const scrollRef = useRef(null);
 
     const handleMouseMove = (e) => {
-        if (!isCinephile || !containerRef.current || !scrollRef.current) return;
+        if (!isCinephile || !containerRef.current || !scrollRef.current || window.innerWidth < 768) return;
 
         const containerWidth = containerRef.current.offsetWidth;
         const scrollWidth = scrollRef.current.scrollWidth;
@@ -135,15 +135,15 @@ const Experience = ({ isCinephile }) => {
                 </p>
             </motion.div>
 
-            <div className="w-full overflow-hidden px-6 md:px-12 py-8 pb-16">
+            <div className="w-full overflow-x-auto md:overflow-hidden hide-scrollbar px-6 md:px-12 py-8 pb-16">
                 <div
                     ref={scrollRef}
-                    className="flex gap-4 md:gap-12 w-max pl-4 items-center transition-transform duration-300 ease-out"
+                    className="flex gap-4 md:gap-12 w-max pl-4 items-center focus:outline-none md:transition-transform duration-300 ease-out"
                 >
                     <div className="w-[85vw] md:w-[400px] snap-center flex-shrink-0 flex items-center justify-center relative border-4 border-ink bg-comic-yellow shadow-comic-hard-cyan overflow-hidden group py-16 sm:py-24 md:py-32">
-                        <div className="absolute inset-0 bg-[repeating-conic-gradient(#ff003c_0_15deg,transparent_15deg_30deg)] opacity-20 group-hover:rotate-12 transition-transform duration-700"></div>
+                        <div className="absolute inset-0 bg-[repeating-conic-gradient(#ff003c_0_15deg,transparent_15deg_30deg)] opacity-20 md:group-hover:rotate-12 transition-transform duration-700"></div>
 
-                        <div className="relative z-10 flex flex-col items-center justify-center transform -rotate-12 group-hover:scale-110 transition-transform duration-300">
+                        <div className="relative z-10 flex flex-col items-center justify-center transform -rotate-12 md:group-hover:scale-110 transition-transform duration-300">
                             <span className="font-bold uppercase tracking-widest text-lg text-ink comic-stroke px-4 py-1 bg-white border-4 border-ink mb-4 transform rotate-6">
                                 VOL. 1
                             </span>
@@ -152,15 +152,15 @@ const Experience = ({ isCinephile }) => {
                             </h3>
                         </div>
 
-                        <div className="absolute inset-0 border-8 border-transparent group-hover:border-white transition-colors duration-300 pointer-events-none mix-blend-overlay"></div>
+                        <div className="absolute inset-0 border-[12px] border-transparent md:group-hover:border-white transition-colors duration-300 pointer-events-none mix-blend-overlay"></div>
                     </div>
 
                     {experiences.map((exp, i) => (
                         <div key={exp.id} className={`w-[85vw] md:w-[600px] flex-shrink-0 flex flex-col relative group`}>
-                            <div className={`flex-1 border-4 ${exp.bgColor === 'bg-ink' ? 'border-noir bg-ink' : 'border-ink bg-noir'} shadow-comic-hard-yellow flex flex-col justify-between overflow-hidden group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-300 relative`}>
+                            <div className={`flex-1 border-4 ${exp.bgColor === 'bg-ink' ? 'border-noir bg-ink' : 'border-ink bg-noir'} shadow-comic-hard-yellow flex flex-col justify-between overflow-hidden md:group-hover:-translate-y-2 md:group-hover:-translate-x-2 transition-transform duration-300 relative`}>
 
                                 <div className={`border-b-4 ${exp.bgColor === 'bg-ink' ? 'border-noir bg-comic-yellow' : 'border-ink bg-comic-red'} p-3 flex justify-between items-center`}>
-                                    <span className="font-bold uppercase tracking-widest text-xs md:text-sm text-ink comic-stroke px-2 py-1 bg-noir border-2 border-ink group-hover:bg-comic-cyan transition-colors">
+                                    <span className="font-bold uppercase tracking-widest text-xs md:text-sm text-ink comic-stroke px-2 py-1 bg-noir border-2 border-ink md:group-hover:bg-comic-cyan transition-colors">
                                         SCENE {i + 1}
                                     </span>
                                     <span className={`font-comic tracking-wider text-xl ${exp.bgColor === 'bg-ink' ? 'text-noir' : 'text-ink'}`}>
@@ -173,14 +173,14 @@ const Experience = ({ isCinephile }) => {
                                         {exp.title}
                                     </h3>
 
-                                    <div className={`mt-auto border-4 ${exp.bgColor === 'bg-ink' ? 'border-noir bg-white' : 'border-ink bg-comic-yellow'} p-3 md:p-4 shadow-comic-dark transform rotate-1 group-hover:-rotate-1 transition-transform`}>
+                                    <div className={`mt-auto border-4 ${exp.bgColor === 'bg-ink' ? 'border-noir bg-white' : 'border-ink bg-comic-yellow'} p-3 md:p-4 shadow-comic-dark transform rotate-1 md:group-hover:-rotate-1 transition-transform`}>
                                         <p className="font-comic text-base md:text-xl leading-snug text-slate-800">
                                             "{exp.dialogue}"
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="absolute top-1/3 -right-6 md:-right-12 transform rotate-90 opacity-20 group-hover:opacity-100 transition-opacity pointer-events-none z-0">
+                                <div className="absolute top-1/3 -right-6 md:-right-12 transform rotate-90 opacity-20 md:group-hover:opacity-100 transition-opacity pointer-events-none z-0">
                                     <span className={`font-comic text-5xl md:text-9xl ${exp.bgColor === 'bg-ink' ? 'text-comic-red' : 'text-comic-cyan'} comic-stroke whitespace-nowrap`}>
                                         {exp.actionText}
                                     </span>

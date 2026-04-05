@@ -65,23 +65,25 @@
   .shimmer-gold::after {
     content: "";
     position: absolute;
-    top: -50%;
+    top: -100%;
     left: -150%;
-    width: 250%; 
-    height: 200%;
+    width: 300%; 
+    height: 300%;
     background: linear-gradient(
-      45deg,
-      transparent 38%,
-      rgba(197, 160, 89, 0.15) 45%,
-      rgba(255, 255, 255, 0.75) 50%,
-      rgba(197, 160, 89, 0.15) 55%,
-      transparent 62%
+      60deg,
+      transparent 20%,
+      rgba(197, 160, 89, 0.05) 35%,
+      rgba(234, 215, 181, 0.4) 45%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(234, 215, 181, 0.4) 55%,
+      rgba(197, 160, 89, 0.05) 65%,
+      transparent 80%
     );
-    transform: rotate(25deg);
-    animation: shimmer-infinite 4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+    transform: rotate(15deg);
+    animation: shimmer-infinite 3.8s infinite ease-in-out;
     pointer-events: none;
     z-index: 10;
-    opacity: 0.4;
+    opacity: 0.9;
   }
 
   .liquid-light-glide {
@@ -295,7 +297,7 @@
 
 @keyframes shimmer-infinite {
   0% { left: -150%; }
-  66%, 100% { left: 150%; }
+  85%, 100% { left: 150%; }
 }
 
 @keyframes shimmer {

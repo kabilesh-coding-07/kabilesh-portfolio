@@ -24,9 +24,9 @@ const Projects = ({ isCinephile }) => {
         },
         {
             title: "Ride Infinity",
-            description: "A modern automotive rental ecosystem with a sleek light-mode interface, curated fleet management, and a high-performance booking dashboard.",
+            description: "A modern motorbike rental ecosystem with a sleek light-mode interface, curated high-performance fleet, and a high-performance booking dashboard.",
             image: "/projects/ride.png",
-            badge: "AUTOMOTIVE",
+            badge: "SUPERBIKES",
             demoUrl: "https://ride-finity.vercel.app",
             category: "Automotive"
         }
